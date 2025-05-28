@@ -1,3 +1,38 @@
+@import "modern-normalize/modern-normalize.css";
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 @font-face {
   font-family: "Fixel";
   src: url("/fonts/FixelDisplay-Regular.woff2") format("woff2"),
@@ -32,4 +67,24 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+}
+
+:root {
+  --black: #121417;
+  --green: #85aa9f;
+  --light-green: #a5c0b8;
+  --white: #fcfcfc;
+  --white-1: #f8f8f8;
+  --gray: rgba(18, 20, 23, 0.5);
+  --red: #d80027;
+  --success-green: #3cbf61;
+}
+
+body {
+  background-image: linear-gradient(
+    292deg,
+    rgba(133, 170, 159, 0.51) 0%,
+    rgba(255, 255, 255, 0) 100%,
+    var(--white-1)
+  );
 }
