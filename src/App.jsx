@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import "./App.css";
+import AppBar from "./components/AppBar/AppBar.jsx";
 
 const RegisterPage = lazy(() =>
   import("./pages/RegisterPage/RegisterPage.jsx")
@@ -25,6 +26,7 @@ const NotFoundPage = lazy(() =>
 function App() {
   return (
     <>
+      <AppBar />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/register" element={<RegisterPage />}></Route>
