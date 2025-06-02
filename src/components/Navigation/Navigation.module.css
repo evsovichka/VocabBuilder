@@ -1,0 +1,15 @@
+.navList {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  font-weight: 500;
+  font-size: 14px;
+  align-items: center;
+}
+
+.activeLink {
+  background-color: var(--green);
+  border-radius: 15px;
+  padding: 12px 20px;
+  color: var(--white);
+}

@@ -27,6 +27,13 @@ ol {
   list-style: none;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+
 img {
   display: block;
   max-width: 100%;

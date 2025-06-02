@@ -6,6 +6,12 @@
     align-items: center;
     gap: 3px;
   }
+  .wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+  }
 }
 
 .section {
@@ -18,6 +24,12 @@
 
 @media screen and (min-width: 375px) {
   .userInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+  .wrap {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -49,6 +61,13 @@
 /* ------------Tablet------------ */
 
 @media screen and (min-width: 768px) {
+  .section {
+    padding: 20px;
+  }
+
+  .wrap {
+    gap: 28px;
+  }
   .userInfo {
     gap: 16px;
   }
@@ -60,7 +79,18 @@
     width: 48px;
     height: 48px;
   }
-  .iconBurger {
-    margin-left: 12px;
+}
+
+/* ------------Desktop------------ */
+
+@media screen and (min-width: 1440px) {
+  .section {
+    justify-content: space-around;
+  }
+  .userInfo {
+    gap: 10px;
+  }
+  .wrap {
+    gap: 16px;
   }
 }
