@@ -1,11 +1,22 @@
 /* -----------Mobile----------- */
 
-.wrap {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  align-items: center;
-  width: 182px;
+@media screen and (max-width: 374.8px) {
+  .wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    width: 182px;
+  }
 }
 
 .image {

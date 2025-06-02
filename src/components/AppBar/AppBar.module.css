@@ -1,4 +1,12 @@
 /* ------------Mobile------------ */
+@media screen and (max-width: 374.8px) {
+  .userInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+  }
+}
 
 .section {
   padding: 16px;
@@ -8,11 +16,13 @@
   justify-content: space-between;
 }
 
-.userInfo {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
+@media screen and (min-width: 375px) {
+  .userInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
 }
 
 .userName {
@@ -34,4 +44,23 @@
 }
 .iconBurger {
   stroke: var(--black);
+}
+
+/* ------------Tablet------------ */
+
+@media screen and (min-width: 768px) {
+  .userInfo {
+    gap: 16px;
+  }
+  .userName {
+    font-size: 20px;
+  }
+
+  .userInfo div {
+    width: 48px;
+    height: 48px;
+  }
+  .iconBurger {
+    margin-left: 12px;
+  }
 }
