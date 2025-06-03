@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useResizeWindow } from "../../utils/resizeWindow.js";
 import Logo from "../Logo/Logo";
 import Logout from "../Logout/Logout.jsx";
@@ -12,9 +13,9 @@ export default function AppBar({ name = "User" }) {
   const isDesktop = sizeWindow >= 1440;
 
   return (
-    <section className={css.section}>
+    <section className={clsx(css.section, !isLogged && css.unlogged)}>
       <Logo />
-      {isDesktop && <Navigation />}
+      {isDesktop && isLogged && <Navigation />}
       {isLogged && (
         <div className={css.wrap}>
           <div className={css.userInfo}>

@@ -1,0 +1,26 @@
+.wrapper {
+  border-radius: 25px 25px 0 0;
+  width: 375px;
+  /* height: 479px; */
+  padding: 32px 16px 57px 16px;
+  background: rgba(133, 170, 159, 0.1);
+  margin-top: 27px;
+}
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: start;
+}
+.title {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 107%;
+  letter-spacing: -0.02em;
+}
+.text {
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(18, 20, 23, 0.8);
+}

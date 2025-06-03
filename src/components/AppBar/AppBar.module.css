@@ -87,6 +87,9 @@
   .section {
     justify-content: space-around;
   }
+  .unlogged {
+    justify-content: start;
+  }
   .userInfo {
     gap: 10px;
   }
