@@ -13,12 +13,14 @@ export default function LoginForm() {
       <form className={css.form}>
         <input type="email" placeholder="Email" className={css.input} />
         <input type="password" placeholder="Password" className={css.input} />
-        <button type="submit" className={css.button}>
-          Login
-        </button>
-        <Link to="/register" className={css.link}>
-          Register
-        </Link>
+        <div className={css.buttonWrap}>
+          <button type="submit" className={css.button}>
+            Login
+          </button>
+          <Link to="/register" className={css.link}>
+            Register
+          </Link>
+        </div>
       </form>
     </div>
   );

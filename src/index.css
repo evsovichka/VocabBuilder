@@ -95,4 +95,6 @@ body {
   color: var(--black);
   font-size: 14px;
   background-color: var(--white-1);
+  /* overflow: hidden; */
+  height: 100%;
 }

@@ -1,10 +1,11 @@
+/* ----------Mobile----------- */
 .wrapper {
-  border-radius: 25px 25px 0 0;
-  width: 375px;
+  border-radius: 25px;
+  width: 100%;
+  max-width: 375px;
   height: 479px;
   padding: 32px 16px 57px 16px;
   background: rgba(133, 170, 159, 0.1);
-  margin-top: 27px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -65,6 +66,13 @@
   align-items: center;
 }
 
+.buttonWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
 .button {
   width: 100%;
   background-color: var(--green);
@@ -88,10 +96,41 @@
   line-height: 150%;
   text-decoration: underline;
   color: var(--gray);
-  padding-top: 2px;
 }
 
 .link:hover,
 .link:focus {
   color: var(--black);
+}
+
+/* ----------Tablet----------- */
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    border-radius: 30px;
+    max-width: 627px;
+    height: 517px;
+    padding: 48px 64px;
+    gap: 32px;
+  }
+
+  .title {
+    font-size: 40px;
+    line-height: 120%;
+  }
+  .text {
+    font-size: 20px;
+  }
+  .textWrap {
+    gap: 20px;
+  }
+  .form {
+    gap: 18px;
+  }
+
+  .button {
+    font-size: 18px;
+    line-height: 156%;
+    margin-top: 14px;
+  }
 }
