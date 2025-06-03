@@ -10,11 +10,15 @@ export default function LoginForm() {
           Please enter your login details to continue using our service:
         </p>
       </div>
-      <form>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button type="submit">Login</button>
-        <Link to="/register">Reister</Link>
+      <form className={css.form}>
+        <input type="email" placeholder="Email" className={css.input} />
+        <input type="password" placeholder="Password" className={css.input} />
+        <button type="submit" className={css.button}>
+          Login
+        </button>
+        <Link to="/register" className={css.link}>
+          Register
+        </Link>
       </form>
     </div>
   );

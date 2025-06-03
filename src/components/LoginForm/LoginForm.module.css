@@ -1,10 +1,13 @@
 .wrapper {
   border-radius: 25px 25px 0 0;
   width: 375px;
-  /* height: 479px; */
+  height: 479px;
   padding: 32px 16px 57px 16px;
   background: rgba(133, 170, 159, 0.1);
   margin-top: 27px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .textWrap {
@@ -23,4 +26,72 @@
   font-size: 16px;
   line-height: 150%;
   color: rgba(18, 20, 23, 0.8);
+}
+
+.input {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 15px;
+  background-color: transparent;
+  padding: 16px 18px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.input::placeholder {
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--black);
+}
+
+.input:hover,
+.input:focus {
+  outline: none;
+  border: 1px solid var(--green);
+}
+
+.inputError {
+  border-color: var(--red);
+}
+
+.inputSuccess {
+  border-color: var(--success-green);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.button {
+  width: 100%;
+  background-color: var(--green);
+  border-radius: 30px;
+  padding: 16px 150px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--white);
+  margin-top: 18px;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--light-green);
+}
+
+.link {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  color: var(--gray);
+  padding-top: 2px;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--black);
 }
