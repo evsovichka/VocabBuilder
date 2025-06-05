@@ -1,4 +1,5 @@
 /* ----------Mobile----------- */
+
 .wrapper {
   border-radius: 25px;
   width: 100%;
@@ -67,6 +68,7 @@
 }
 
 .buttonWrap {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -78,6 +80,7 @@
   background-color: var(--green);
   border-radius: 30px;
   padding: 16px 150px;
+  text-align: center;
   font-weight: 700;
   font-size: 16px;
   line-height: 150%;
@@ -103,6 +106,14 @@
   color: var(--black);
 }
 
+@media screen and (max-width: 374px) {
+  .wrapper {
+    padding: 32px 30px 57px 30px;
+  }
+  .button {
+    padding: 16px 120px;
+  }
+}
 /* ----------Tablet----------- */
 
 @media screen and (min-width: 768px) {

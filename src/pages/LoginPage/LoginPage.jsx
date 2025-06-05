@@ -2,16 +2,24 @@ import illustration from "../../assets/images/loginIllustration.svg";
 import LoginForm from "../../components/LoginForm/LoginForm.jsx";
 import { useResizeWindow } from "../../utils/resizeWindow.js";
 import css from "./LoginPage.module.css";
+import { useKeyboardVisible } from "../../utils/keyboardVisible.js";
 
 export default function LoginPage() {
   const sizeWindow = useResizeWindow();
   const isMobile = sizeWindow < 768;
   const isTablet = sizeWindow >= 768 && sizeWindow < 1440;
+  const isKeyboardOpen = useKeyboardVisible();
   return (
-    <section>
-      <div className={css.background}></div>
+    <section className={css.page}>
+      {!isMobile && <div className={css.background}></div>}
       <div className={css.section}>
-        <LoginForm />
+        <div
+          className={`${css.formWrapper} ${
+            isKeyboardOpen ? css.keyboardOpen : ""
+          }`}
+        >
+          <LoginForm />
+        </div>
         <div className={css.illustrationBox}>
           {!isTablet && (
             <img
