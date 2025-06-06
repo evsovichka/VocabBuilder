@@ -29,6 +29,10 @@
   line-height: 150%;
   color: rgba(18, 20, 23, 0.8);
 }
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
 
 .input {
   border: 1px solid rgba(18, 20, 23, 0.1);
@@ -105,7 +109,23 @@
 .link:focus {
   color: var(--black);
 }
+.error {
+  color: var(--red);
+  position: absolute;
+  font-size: 10px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  left: 0;
+  top: 98%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
 
+.error svg {
+  fill: var(--red);
+}
 @media screen and (max-width: 374px) {
   .wrapper {
     padding: 32px 30px 57px 30px;
@@ -143,5 +163,8 @@
     font-size: 18px;
     line-height: 156%;
     margin-top: 14px;
+  }
+  .error {
+    font-size: 12px;
   }
 }
