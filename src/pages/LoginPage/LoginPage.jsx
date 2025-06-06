@@ -9,6 +9,7 @@ export default function LoginPage() {
   const isMobile = sizeWindow < 768;
   const isTablet = sizeWindow >= 768 && sizeWindow < 1440;
   const isKeyboardOpen = useKeyboardVisible();
+
   return (
     <section className={css.page}>
       {!isMobile && <div className={css.background}></div>}

@@ -1,0 +1,170 @@
+/* ----------Mobile----------- */
+
+.wrapper {
+  border-radius: 25px;
+  width: 100%;
+  max-width: 375px;
+  height: 549px;
+  padding: 32px 16px 57px 16px;
+  background: rgba(133, 170, 159, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: start;
+}
+.title {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 107%;
+  letter-spacing: -0.02em;
+}
+.text {
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(18, 20, 23, 0.8);
+}
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 15px;
+  background-color: transparent;
+  padding: 16px 18px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.input::placeholder {
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--black);
+}
+
+.input:hover,
+.input:focus {
+  outline: none;
+  border: 1px solid var(--green);
+}
+
+.inputError {
+  border-color: var(--red);
+}
+
+.inputSuccess {
+  border-color: var(--success-green);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.buttonWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.button {
+  width: 100%;
+  background-color: var(--green);
+  border-radius: 30px;
+  padding: 16px 150px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--white);
+  margin-top: 18px;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--light-green);
+}
+
+.link {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  color: var(--gray);
+}
+
+.link:hover,
+.link:focus {
+  color: var(--black);
+}
+.error {
+  color: var(--red);
+  position: absolute;
+  font-size: 10px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  left: 0;
+  top: 98%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.error svg {
+  fill: var(--red);
+}
+@media screen and (max-width: 374px) {
+  .wrapper {
+    padding: 32px 30px 57px 30px;
+  }
+  .button {
+    padding: 16px 120px;
+  }
+}
+/* ----------Tablet----------- */
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    border-radius: 30px;
+    max-width: 627px;
+    height: 591px;
+    padding: 48px 64px;
+    gap: 32px;
+  }
+
+  .title {
+    font-size: 40px;
+    line-height: 120%;
+  }
+  .text {
+    font-size: 20px;
+  }
+  .textWrap {
+    gap: 20px;
+  }
+  .form {
+    gap: 18px;
+  }
+
+  .button {
+    font-size: 18px;
+    line-height: 156%;
+    margin-top: 14px;
+  }
+  .error {
+    font-size: 12px;
+  }
+}

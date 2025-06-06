@@ -1,7 +1,7 @@
 /* ----------Mobile----------- */
 .page {
   height: 100dvh;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   display: flex;
   flex-direction: column;
