@@ -4,21 +4,32 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./validation.js";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function RegisterForm() {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => setShowPassword((prev) => !prev);
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields },
     reset,
-  } = useForm({ resolver: yupResolver(loginSchema) });
+    watch,
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+    mode: "onChange",
+  });
 
   const onSubmit = (data) => {
     console.log(data);
     reset();
     navigate("/dictionary");
   };
+
+  const passwordValue = watch("password");
   return (
     <div className={css.wrapper}>
       <div className={css.textWrap}>
@@ -61,21 +72,39 @@ export default function RegisterForm() {
             </span>
           )}
         </div>
-        <div className={css.inputWrapper}>
+        <div className={`${css.inputWrapper} ${css.inputPassword}`}>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             {...register("password")}
             placeholder="Password"
             className={`${css.input} ${errors.password ? css.inputError : ""}`}
           />
-          {errors.password && (
+          <span className={css.togglePassword} onClick={togglePassword}>
+            {showPassword ? (
+              <svg width="20" height="20">
+                <use href="/icons/icons.svg#icon-eye" />
+              </svg>
+            ) : (
+              <svg width="20" height="20">
+                <use href="/icons/icons.svg#icon-eye-off" />
+              </svg>
+            )}
+          </span>
+          {errors.password ? (
             <span className={css.error}>
               <svg width="16" height="16">
                 <use href="/icons/icons.svg#icon-error" />
               </svg>
               {errors.password.message}
             </span>
-          )}
+          ) : passwordValue && touchedFields.password ? (
+            <span className={css.success}>
+              <svg width="16" height="16" className={css.successIcon}>
+                <use href="/icons/icons.svg#icon-success" />
+              </svg>
+              Success password
+            </span>
+          ) : null}
         </div>
         <div className={css.buttonWrap}>
           <button type="submit" className={css.button}>

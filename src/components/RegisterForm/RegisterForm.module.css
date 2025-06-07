@@ -126,6 +126,47 @@
 .error svg {
   fill: var(--red);
 }
+
+.success {
+  color: var(--success-green);
+  position: absolute;
+  font-size: 10px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  left: 0;
+  top: 98%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.success .successIcon {
+  stroke: var(--success-green);
+  fill: var(--success-green);
+}
+.inputPassword {
+  position: relative;
+  display: inline-block;
+}
+.inputPassword input {
+  padding: 16px 55px 16px 18px;
+}
+.togglePassword svg {
+  fill: transparent;
+  stroke: var(--black);
+  position: absolute;
+}
+.togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
 @media screen and (max-width: 374px) {
   .wrapper {
     padding: 32px 30px 57px 30px;
