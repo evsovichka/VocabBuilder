@@ -60,10 +60,6 @@
   border-color: var(--red);
 }
 
-.inputSuccess {
-  border-color: var(--success-green);
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -125,6 +121,28 @@
 
 .error svg {
   fill: var(--red);
+}
+
+.inputPassword {
+  position: relative;
+  display: inline-block;
+}
+.inputPassword input {
+  padding: 16px 55px 16px 18px;
+}
+.togglePassword svg {
+  fill: transparent;
+  stroke: var(--black);
+  position: absolute;
+}
+.togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
 }
 @media screen and (max-width: 374px) {
   .wrapper {

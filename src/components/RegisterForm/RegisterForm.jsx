@@ -77,7 +77,11 @@ export default function RegisterForm() {
             type={showPassword ? "text" : "password"}
             {...register("password")}
             placeholder="Password"
-            className={`${css.input} ${errors.password ? css.inputError : ""}`}
+            className={`${css.input} ${errors.password ? css.inputError : ""} ${
+              !errors.password && passwordValue && touchedFields.password
+                ? css.inputSuccess
+                : ""
+            }`}
           />
           <span className={css.togglePassword} onClick={togglePassword}>
             {showPassword ? (

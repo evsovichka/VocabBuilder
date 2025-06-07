@@ -4,21 +4,27 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./validation.js";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function LoginForm() {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => setShowPassword((prev) => !prev);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({ resolver: yupResolver(loginSchema) });
+  } = useForm({ resolver: yupResolver(loginSchema), mode: "onChange" });
 
   const onSubmit = (data) => {
     console.log(data);
     reset();
     navigate("/dictionary");
   };
+
   return (
     <div className={css.wrapper}>
       <div className={css.textWrap}>
@@ -44,13 +50,24 @@ export default function LoginForm() {
             </span>
           )}
         </div>
-        <div className={css.inputWrapper}>
+        <div className={`${css.inputWrapper} ${css.inputPassword}`}>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             {...register("password")}
             placeholder="Password"
             className={`${css.input} ${errors.password ? css.inputError : ""}`}
           />
+          <span className={css.togglePassword} onClick={togglePassword}>
+            {showPassword ? (
+              <svg width="20" height="20">
+                <use href="/icons/icons.svg#icon-eye" />
+              </svg>
+            ) : (
+              <svg width="20" height="20">
+                <use href="/icons/icons.svg#icon-eye-off" />
+              </svg>
+            )}
+          </span>
           {errors.password && (
             <span className={css.error}>
               <svg width="16" height="16">

@@ -10,10 +10,10 @@ export const loginSchema = yup.object({
     .min(7, "Minimum 7 characters")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)/,
-      "Must contain Latin letters and numbers"
+      "Must contain latin letters and numbers"
     )
     .matches(
       /^[a-zA-Z\d]+$/,
-      "Only Latin letters and digits are allowed (no symbols)"
+      "Only latin letters and digits are allowed (no symbols)"
     ),
 });
