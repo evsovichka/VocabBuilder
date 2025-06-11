@@ -1,7 +1,7 @@
 /* ----------Mobile----------- */
 .page {
-  height: 100dvh;
-  /* overflow: hidden; */
+  height: calc(100dvh - 68px);
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -19,6 +19,7 @@
   position: relative;
   z-index: 1;
   transition: transform 0.3s ease;
+  bottom: 0;
 }
 .formWrapper::before {
   content: "";
@@ -64,9 +65,13 @@
 /* ----------Tablet----------- */
 
 @media screen and (min-width: 768px) {
+  .page {
+    height: calc(100dvh - 88px);
+  }
   .section {
     flex-direction: column;
-    padding: 120px 70px 106px 70px;
+    justify-content: space-around;
+    align-items: center;
   }
   .illustrationBox {
     position: static;
