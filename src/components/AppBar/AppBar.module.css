@@ -56,6 +56,11 @@
 }
 .iconBurger {
   stroke: var(--black);
+  cursor: pointer;
+}
+
+.iconBurger:hover {
+  transform: scale(1.1);
 }
 
 /* ------------Tablet------------ */

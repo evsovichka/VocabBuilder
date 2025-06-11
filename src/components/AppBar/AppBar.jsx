@@ -5,7 +5,7 @@ import Logout from "../Logout/Logout.jsx";
 import Navigation from "../Navigation/Navigation.jsx";
 import css from "./AppBar.module.css";
 
-export default function AppBar({ name = "User" }) {
+export default function AppBar({ name = "User", onOpen }) {
   const isLogged = true;
 
   const sizeWindow = useResizeWindow();
@@ -33,6 +33,7 @@ export default function AppBar({ name = "User" }) {
               width={isMobile ? 32 : 40}
               height={isMobile ? 22 : 28}
               className={css.iconBurger}
+              onClick={onOpen}
             >
               <use href="/icons/icons.svg#icon-burger" />
             </svg>

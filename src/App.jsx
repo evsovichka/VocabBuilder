@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 import "./App.css";
 import AppBar from "./components/AppBar/AppBar.jsx";
+import MenuModal from "./components/MenuModal/MenuModal.jsx";
 
 const RegisterPage = lazy(() =>
   import("./pages/RegisterPage/RegisterPage.jsx")
@@ -24,9 +25,14 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpenOrCloseModal = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
-      <AppBar />
+      <AppBar onOpen={handleOpenOrCloseModal} />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/register" element={<RegisterPage />}></Route>
@@ -37,6 +43,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
       </Suspense>
+      {isOpen && <MenuModal onClose={handleOpenOrCloseModal} />}
     </>
   );
 }

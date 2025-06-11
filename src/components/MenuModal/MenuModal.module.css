@@ -1,0 +1,86 @@
+/* -------Mobile-------- */
+
+.modal {
+  height: 100%;
+  width: 185px;
+  top: 0;
+  right: 0;
+  position: fixed;
+  background-color: var(--green);
+  background-image: url(../../assets/images/loginIllustration.svg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  padding: 16px;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border: none;
+}
+
+.topWrap {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.topWrap svg {
+  stroke: var(--white);
+  cursor: pointer;
+}
+
+.topWrap svg:hover {
+  transform: scale(1.1);
+}
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.userName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+.userInfo div {
+  border-radius: 30px;
+  width: 36px;
+  height: 36px;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userInfo div svg {
+  fill: var(--green);
+}
+.navigationWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  justify-content: flex-start;
+}
+
+/* -------Tablet-------- */
+
+@media screen and (min-width: 768px) {
+  .modal {
+    padding: 20px 32px;
+    width: 300px;
+    gap: 100px;
+  }
+  .userInfo {
+    gap: 16px;
+  }
+  .userName {
+    font-size: 20px;
+  }
+
+  .userInfo div {
+    width: 48px;
+    height: 48px;
+  }
+}
