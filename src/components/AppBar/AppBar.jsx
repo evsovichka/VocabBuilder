@@ -4,6 +4,7 @@ import Logo from "../Logo/Logo";
 import Logout from "../Logout/Logout.jsx";
 import Navigation from "../Navigation/Navigation.jsx";
 import css from "./AppBar.module.css";
+import UserMenu from "../UserMenu/UserMenu.jsx";
 
 export default function AppBar({ name = "User", onOpen }) {
   const isLogged = true;
@@ -18,14 +19,7 @@ export default function AppBar({ name = "User", onOpen }) {
       {isDesktop && isLogged && <Navigation />}
       {isLogged && (
         <div className={css.wrap}>
-          <div className={css.userInfo}>
-            <p className={css.userName}>{name}</p>
-            <div>
-              <svg width={isMobile ? 20 : 24} height={isMobile ? 20 : 24}>
-                <use href="/icons/icons.svg#icon-user" />
-              </svg>
-            </div>
-          </div>
+          <UserMenu isMobile={isMobile} username={name} />
           {isDesktop ? (
             <Logout />
           ) : (

@@ -1,11 +1,5 @@
 /* ------------Mobile------------ */
 @media screen and (max-width: 374.8px) {
-  .userInfo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 3px;
-  }
   .wrap {
     display: flex;
     flex-direction: row;
@@ -23,12 +17,6 @@
 }
 
 @media screen and (min-width: 375px) {
-  .userInfo {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    align-items: center;
-  }
   .wrap {
     display: flex;
     flex-direction: row;
@@ -37,23 +25,6 @@
   }
 }
 
-.userName {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-}
-.userInfo div {
-  border-radius: 30px;
-  width: 36px;
-  height: 36px;
-  background-color: var(--green);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.userInfo div svg {
-  fill: rgba(252, 252, 252, 0.7);
-}
 .iconBurger {
   stroke: var(--black);
   cursor: pointer;
@@ -73,17 +44,6 @@
   .wrap {
     gap: 28px;
   }
-  .userInfo {
-    gap: 16px;
-  }
-  .userName {
-    font-size: 20px;
-  }
-
-  .userInfo div {
-    width: 48px;
-    height: 48px;
-  }
 }
 
 /* ------------Desktop------------ */
@@ -94,9 +54,6 @@
   }
   .unlogged {
     justify-content: start;
-  }
-  .userInfo {
-    gap: 10px;
   }
   .wrap {
     gap: 16px;

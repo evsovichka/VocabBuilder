@@ -1,0 +1,68 @@
+/* ------------Mobile------------ */
+@media screen and (max-width: 374.8px) {
+  .userInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .userInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+.userName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+.userInfo div {
+  border-radius: 30px;
+  width: 36px;
+  height: 36px;
+  background-color: var(--green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userInfo div svg {
+  fill: rgba(252, 252, 252, 0.7);
+}
+
+.modal div {
+  background-color: var(--white);
+}
+
+.modal div svg {
+  fill: var(--green);
+}
+
+/* ------------Tablet------------ */
+
+@media screen and (min-width: 768px) {
+  .userInfo {
+    gap: 16px;
+  }
+  .userName {
+    font-size: 20px;
+  }
+
+  .userInfo div {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ------------Desktop------------ */
+
+@media screen and (min-width: 1440px) {
+  .userInfo {
+    gap: 10px;
+  }
+}

@@ -1,6 +1,7 @@
 import { useResizeWindow } from "../../utils/resizeWindow";
 import Logout from "../Logout/Logout";
 import Navigation from "../Navigation/Navigation.jsx";
+import UserMenu from "../UserMenu/UserMenu.jsx";
 import css from "./MenuModal.module.css";
 import ReactModal from "react-modal";
 
@@ -22,14 +23,7 @@ export default function MenuModal({ onClose, name = "User" }) {
       }}
     >
       <div className={css.topWrap}>
-        <div className={css.userInfo}>
-          <p className={css.userName}>{name}</p>
-          <div>
-            <svg width={isMobile ? 20 : 24} height={isMobile ? 20 : 24}>
-              <use href="/icons/icons.svg#icon-user" />
-            </svg>
-          </div>
-        </div>
+        <UserMenu isMobile={isMobile} username={name} className="modal" />
         <svg
           width={isMobile ? 32 : 40}
           height={isMobile ? 32 : 40}

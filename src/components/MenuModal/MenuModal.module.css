@@ -33,30 +33,7 @@
 .topWrap svg:hover {
   transform: scale(1.1);
 }
-.userInfo {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-}
 
-.userName {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-}
-.userInfo div {
-  border-radius: 30px;
-  width: 36px;
-  height: 36px;
-  background-color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.userInfo div svg {
-  fill: var(--green);
-}
 .navigationWrap {
   display: flex;
   flex-direction: column;
@@ -71,16 +48,5 @@
     padding: 20px 32px;
     width: 300px;
     gap: 100px;
-  }
-  .userInfo {
-    gap: 16px;
-  }
-  .userName {
-    font-size: 20px;
-  }
-
-  .userInfo div {
-    width: 48px;
-    height: 48px;
   }
 }
