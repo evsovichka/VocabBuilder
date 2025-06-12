@@ -3,9 +3,9 @@
 .modal {
   height: 100%;
   width: 185px;
+  position: fixed;
   top: 0;
   right: 0;
-  position: fixed;
   background-color: var(--green);
   background-image: url(../../assets/images/loginIllustration.svg);
   background-repeat: no-repeat;
@@ -16,6 +16,7 @@
   flex-direction: column;
   gap: 40px;
   border: none;
+  z-index: 1000;
 }
 
 .topWrap {

@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy } from "react";
 import "./App.css";
 import AppBar from "./components/AppBar/AppBar.jsx";
 import MenuModal from "./components/MenuModal/MenuModal.jsx";
+import { useToggle } from "./hooks/useToggle.js";
 
 const RegisterPage = lazy(() =>
   import("./pages/RegisterPage/RegisterPage.jsx")
@@ -25,14 +26,11 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleOpenOrCloseModal = () => {
-    setIsOpen(!isOpen);
-  };
+  const { isOpen, toggle } = useToggle();
 
   return (
     <>
-      <AppBar onOpen={handleOpenOrCloseModal} />
+      <AppBar onOpen={toggle} />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/register" element={<RegisterPage />}></Route>
@@ -43,7 +41,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
       </Suspense>
-      {isOpen && <MenuModal onClose={handleOpenOrCloseModal} />}
+      <MenuModal onClose={toggle} isOpen={isOpen} />
     </>
   );
 }

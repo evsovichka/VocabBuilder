@@ -5,12 +5,12 @@ import UserMenu from "../UserMenu/UserMenu.jsx";
 import css from "./MenuModal.module.css";
 import ReactModal from "react-modal";
 
-export default function MenuModal({ onClose, name = "User" }) {
+export default function MenuModal({ onClose, isOpen, name = "User" }) {
   const sizeWindow = useResizeWindow();
   const isMobile = sizeWindow < 768;
   return (
     <ReactModal
-      isOpen={true}
+      isOpen={isOpen}
       ariaHideApp={false}
       onRequestClose={onClose}
       shouldCloseOnOverlayClick={true}
@@ -19,6 +19,7 @@ export default function MenuModal({ onClose, name = "User" }) {
       style={{
         overlay: {
           backgroundColor: "rgba(60, 60, 60, 0.4)",
+          zIndex: "999",
         },
       }}
     >
