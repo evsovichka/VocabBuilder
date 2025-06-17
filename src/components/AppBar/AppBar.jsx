@@ -5,19 +5,21 @@ import Logout from "../Logout/Logout.jsx";
 import Navigation from "../Navigation/Navigation.jsx";
 import css from "./AppBar.module.css";
 import UserMenu from "../UserMenu/UserMenu.jsx";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
 
 export default function AppBar({ name = "User", onOpen }) {
-  const isLogged = true;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const sizeWindow = useResizeWindow();
   const isMobile = sizeWindow < 768;
   const isDesktop = sizeWindow >= 1440;
 
   return (
-    <section className={clsx(css.section, !isLogged && css.unlogged)}>
+    <section className={clsx(css.section, !isLoggedIn && css.unlogged)}>
       <Logo />
-      {isDesktop && isLogged && <Navigation />}
-      {isLogged && (
+      {isDesktop && isLoggedIn && <Navigation />}
+      {isLoggedIn && (
         <div className={css.wrap}>
           <UserMenu isMobile={isMobile} username={name} />
           {isDesktop ? (

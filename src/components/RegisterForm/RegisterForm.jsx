@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import css from "./RegisterForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "./validation.js";
-import { useNavigate } from "react-router-dom";
+import { RegisterSchema } from "./validation.js";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { register as signUp } from "../../redux/auth/operations.js";
 
 export default function RegisterForm() {
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const togglePassword = () => setShowPassword((prev) => !prev);
 
@@ -19,14 +20,14 @@ export default function RegisterForm() {
     reset,
     watch,
   } = useForm({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(RegisterSchema),
     mode: "onChange",
   });
 
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(signUp(data));
     reset();
-    navigate("/dictionary");
   };
 
   const passwordValue = watch("password");

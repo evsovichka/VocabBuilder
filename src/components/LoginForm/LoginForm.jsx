@@ -3,12 +3,13 @@ import css from "./LoginForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./validation.js";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logIn } from "../../redux/auth/operations.js";
 
 export default function LoginForm() {
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const togglePassword = () => setShowPassword((prev) => !prev);
 
@@ -21,8 +22,8 @@ export default function LoginForm() {
 
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(logIn(data));
     reset();
-    navigate("/dictionary");
   };
 
   return (
