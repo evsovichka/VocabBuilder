@@ -1,11 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import "./App.css";
 import AppBar from "./components/AppBar/AppBar.jsx";
 import MenuModal from "./components/MenuModal/MenuModal.jsx";
 import { useToggle } from "./hooks/useToggle.js";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "./redux/auth/selectors.js";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectIsLoggedIn,
+  selectIsRefreshing,
+} from "./redux/auth/selectors.js";
+import { refreshUser } from "./redux/auth/operations.js";
 
 const RegisterPage = lazy(() =>
   import("./pages/RegisterPage/RegisterPage.jsx")
@@ -30,8 +34,16 @@ const NotFoundPage = lazy(() =>
 function App() {
   const { isOpen, toggle } = useToggle();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  return (
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <p>Please wait for refreshing user...</p>
+  ) : (
     <>
       <AppBar onOpen={toggle} />
       <Suspense fallback={<div>Loading...</div>}>
