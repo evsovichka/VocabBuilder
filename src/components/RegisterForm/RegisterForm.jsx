@@ -25,7 +25,6 @@ export default function RegisterForm() {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(signUp(data));
     reset();
   };

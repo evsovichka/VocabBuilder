@@ -10,6 +10,8 @@ import {
   selectIsRefreshing,
 } from "./redux/auth/selectors.js";
 import { refreshUser } from "./redux/auth/operations.js";
+import RestrictedRoute from "./components/RestrictedRoute.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 const RegisterPage = lazy(() =>
   import("./pages/RegisterPage/RegisterPage.jsx")
@@ -48,11 +50,51 @@ function App() {
       <AppBar onOpen={toggle} />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/register" element={<RegisterPage />}></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/dictionary" element={<DictionaryPage />}></Route>
-          <Route path="/recommend" element={<RecommendPage />}></Route>
-          <Route path="/training" element={<TrainingPage />}></Route>
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                component={<RegisterPage />}
+                redirectTo={"/dictionary"}
+              />
+            }
+          ></Route>
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                component={<LoginPage />}
+                redirectTo={"/dictionary"}
+              />
+            }
+          ></Route>
+          <Route
+            path="/dictionary"
+            element={
+              <PrivateRoute
+                component={<DictionaryPage />}
+                redirectTo={"/login"}
+              />
+            }
+          ></Route>
+          <Route
+            path="/recommend"
+            element={
+              <PrivateRoute
+                component={<RecommendPage />}
+                redirectTo={"/login"}
+              />
+            }
+          ></Route>
+          <Route
+            path="/training"
+            element={
+              <PrivateRoute
+                component={<TrainingPage />}
+                redirectTo={"/login"}
+              />
+            }
+          ></Route>
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
       </Suspense>
