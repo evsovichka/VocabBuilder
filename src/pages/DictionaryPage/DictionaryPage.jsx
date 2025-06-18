@@ -1,7 +1,9 @@
+import Dashboard from "../../components/Dashboard /Dashboard.jsx";
+
 export default function DictionaryPage() {
   return (
     <section className="container">
-      <h1>Dictionary Page</h1>
+      <Dashboard />
     </section>
   );
 }
