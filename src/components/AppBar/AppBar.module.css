@@ -14,8 +14,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: #fff;
 }
-
+.unlogged {
+  background-color: transparent;
+}
 @media screen and (min-width: 375px) {
   .wrap {
     display: flex;

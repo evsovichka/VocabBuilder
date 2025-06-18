@@ -98,3 +98,7 @@ body {
   /* overflow: hidden; */
   height: 100%;
 }
+
+.container {
+  padding: 30px 16px 48px 16px;
+}
