@@ -22,6 +22,7 @@ export default function CategoriesList() {
         <option value="numerals">Numerals</option>
         <option value="adverb">Adverb</option>
         <option value="preposition">Preposition</option>
+        <option value="conjuction">Conjuction</option>
         <option value="phrasalVerb">Phrasal verb</option>
         <option value="functionalPhrase">Functional phrase</option>
       </select>
