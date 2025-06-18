@@ -1,9 +1,7 @@
 .wrap {
   width: 343px;
   height: 48px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  position: relative;
 }
 
 .input {
@@ -12,7 +10,6 @@
   border: 1px solid rgba(18, 20, 23, 0.1);
   border-radius: 15px;
   padding: 12px 50px 12px 24px;
-  position: relative;
 }
 
 .input,
@@ -31,5 +28,8 @@
   fill: transparent;
   stroke: var(--black);
   position: absolute;
-  right: 30px;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  pointer-events: none;
 }

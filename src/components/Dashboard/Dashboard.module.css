@@ -1,0 +1,23 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.statistic {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding-top: 8px;
+  align-items: center;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--gray);
+}
+.totalCount {
+  font-weight: 500;
+  font-size: 20px;
+}
