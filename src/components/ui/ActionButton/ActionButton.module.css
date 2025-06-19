@@ -1,26 +1,35 @@
-/* ----------Mobile--------- */
-
 .button {
   display: flex;
   flex-direction: row;
-  gap: 6px;
   align-items: center;
   font-weight: 500;
   font-size: 14px;
   line-height: 150%;
 }
-
-.button svg {
+.logOut {
+  gap: 6px;
+}
+.button.logOut svg {
+  width: 16px;
+  height: 16px;
   stroke: var(--white);
 }
 
+.dashboardBtn {
+  gap: 8px;
+}
+.button.dashboardBtn svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--green);
+}
 /* ----------Desktop--------- */
 @media screen and (min-width: 1440px) {
   .button {
     font-size: 16px;
   }
 
-  .button svg {
+  .button.logOut svg {
     stroke: var(--black);
   }
 }

@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: row;
   gap: 8px;
-  padding-top: 8px;
+  padding-top: 32px;
   align-items: center;
 }
 
@@ -20,4 +20,10 @@
 .totalCount {
   font-weight: 500;
   font-size: 20px;
+}
+
+.buttonBox {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }
