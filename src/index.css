@@ -102,3 +102,15 @@ body {
 .container {
   padding: 30px 16px 48px 16px;
 }
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 80px 32px 48px 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    padding: 80px 100px 48px 100px;
+  }
+}

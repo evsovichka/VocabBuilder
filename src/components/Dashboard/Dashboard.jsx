@@ -15,23 +15,27 @@ export default function Dashboard() {
   };
   return (
     <div className={css.wrap}>
-      <SearchInput />
-      <CategoriesList />
-      <div className={css.statistic}>
-        <p className={css.text}>To study: </p>
-        <p className={css.totalCount}>{totalCount}</p>
+      <div className={css.filterWrap}>
+        <SearchInput />
+        <CategoriesList />
       </div>
-      <div className={css.buttonBox}>
-        <ActionButton svgName="icon-plus" className="dashboardBtn">
-          Add word
-        </ActionButton>
-        <ActionButton
-          svgName="icon-arrow-right"
-          className="dashboardBtn"
-          onClick={handleTrainBtnClick}
-        >
-          Train oneself
-        </ActionButton>
+      <div className={css.bottomWrap}>
+        <div className={css.statistic}>
+          <p className={css.text}>To study: </p>
+          <p className={css.totalCount}>{totalCount}</p>
+        </div>
+        <div className={css.buttonBox}>
+          <ActionButton svgName="icon-plus" className="dashboardBtn">
+            Add word
+          </ActionButton>
+          <ActionButton
+            svgName="icon-arrow-right"
+            className="dashboardBtn"
+            onClick={handleTrainBtnClick}
+          >
+            Train oneself
+          </ActionButton>
+        </div>
       </div>
     </div>
   );

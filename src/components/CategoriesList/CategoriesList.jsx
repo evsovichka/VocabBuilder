@@ -16,19 +16,21 @@ export default function CategoriesList() {
 
   return (
     <div className={css.wrap}>
-      <select className={css.select} value={category} onChange={handleChange}>
-        <option value="">Categories</option>
-        {categories.map((category, index) => {
-          return (
-            <option value={category.toLowerCase()} key={index}>
-              {category}
-            </option>
-          );
-        })}
-      </select>
-      <svg className={css.selectIcon}>
-        <use href="/icons/icons.svg#icon-arrow-down" />
-      </svg>
+      <div className={css.selectWrapper}>
+        <select className={css.select} value={category} onChange={handleChange}>
+          <option value="">Categories</option>
+          {categories.map((category, index) => {
+            return (
+              <option value={category.toLowerCase()} key={index}>
+                {category}
+              </option>
+            );
+          })}
+        </select>
+        <svg className={css.selectIcon}>
+          <use href="/icons/icons.svg#icon-arrow-down" />
+        </svg>
+      </div>
       {category === "verb" && (
         <div className={css.radioWrap}>
           <label className={css.radio}>

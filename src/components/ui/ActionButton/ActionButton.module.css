@@ -23,12 +23,16 @@
   height: 20px;
   stroke: var(--green);
 }
-/* ----------Desktop--------- */
-@media screen and (min-width: 1440px) {
+
+/* ----------Tablet--------- */
+@media screen and (min-width: 768px) {
   .button {
     font-size: 16px;
   }
+}
 
+/* ----------Desktop--------- */
+@media screen and (min-width: 1440px) {
   .button.logOut svg {
     stroke: var(--black);
   }

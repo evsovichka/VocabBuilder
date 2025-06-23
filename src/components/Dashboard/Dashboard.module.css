@@ -1,6 +1,12 @@
 .wrap {
   display: flex;
   flex-direction: column;
+  gap: 40px;
+}
+.filterWrap,
+.bottomWrap {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
@@ -8,7 +14,7 @@
   display: flex;
   flex-direction: row;
   gap: 8px;
-  padding-top: 32px;
+  /* padding-top: 32px; */
   align-items: center;
 }
 
@@ -26,4 +32,30 @@
   display: flex;
   flex-direction: row;
   gap: 16px;
+}
+
+/* ----------Tablet--------- */
+
+@media screen and (min-width: 768px) {
+  .wrap {
+    gap: 28px;
+  }
+  .filterWrap {
+    flex-direction: row;
+  }
+  .bottomWrap {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .text {
+    font-size: 16px;
+  }
+}
+
+/* ----------Dasktop--------- */
+@media screen and (min-width: 1440px) {
+  .wrap {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
