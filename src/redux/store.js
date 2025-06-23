@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/slice.js";
 import categoriesReducer from "./categories/slice.js";
+import wordsReducer from "./words/slice.js";
 import {
   persistStore,
   persistReducer,
@@ -26,6 +27,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     categories: categoriesReducer,
+    words: wordsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

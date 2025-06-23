@@ -3,10 +3,12 @@ import CategoriesList from "../CategoriesList/CategoriesList.jsx";
 import SearchInput from "../SearchInput/SearchInput.jsx";
 import ActionButton from "../ui/ActionButton/ActionButton.jsx";
 import css from "./Dashboard.module.css";
+import { useSelector } from "react-redux";
+import { selectStatistics } from "../../redux/words/selectors.js";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const totalCount = 1;
+  const totalCount = useSelector(selectStatistics);
 
   const handleTrainBtnClick = () => {
     navigate("/training");
