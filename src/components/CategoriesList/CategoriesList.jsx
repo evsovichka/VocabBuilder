@@ -2,38 +2,61 @@ import css from "./CategoriesList.module.css";
 import { useSelector } from "react-redux";
 import { selectCategoriesItems } from "../../redux/categories/selectors.js";
 import clsx from "clsx";
+import { useState } from "react";
+import { capitalize } from "../../utils/capitalize.js";
 
 export default function CategoriesList({
-  category,
-  type,
-  handleChangeType,
-  handleChangeCategory,
+  // category,
+  // type,
+  // handleChangeType,
+  // handleChangeCategory,
   variant,
 }) {
   const categories = useSelector(selectCategoriesItems);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [type, setType] = useState("regular");
+
+  const handleChangeType = (evt) => {
+    setType(evt.target.value);
+  };
 
   return (
     <div className={css.wrap}>
-      <div className={clsx(css.selectWrapper, css[`${variant}SelectWrapper`])}>
-        <select
-          className={clsx(css.select, css[`${variant}Select`])}
-          value={category}
-          onChange={handleChangeCategory}
+      <div className={css.selectWrapper}>
+        <div
+          className={clsx(css.customSelect, css[`${variant}CustomSelect`])}
+          onClick={() => setIsOpen((prev) => !prev)}
         >
-          <option value="">Categories</option>
-          {categories.map((category, index) => {
-            return (
-              <option value={category.toLowerCase()} key={index}>
-                {category}
-              </option>
-            );
-          })}
-        </select>
-        <svg className={clsx(css.selectIcon, css[`${variant}SelectIcon`])}>
+          {capitalize(selectedCategory) || "Categories"}
+        </div>
+        {isOpen && (
+          <ul className={clsx(css.dropDown, css[`${variant}DropDown`])}>
+            {categories.map((category, index) => {
+              return (
+                <li
+                  key={index}
+                  className={clsx(
+                    css.item,
+                    css[`${variant}Item`],
+                    category === selectedCategory && css.activeCategory
+                  )}
+                  onClick={() => {
+                    setSelectedCategory(category.toLowerCase());
+                    setIsOpen(false);
+                  }}
+                >
+                  {capitalize(category)}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <svg className={clsx(css.icon, css[`${variant}Icon`])}>
           <use href="/icons/icons.svg#icon-arrow-down" />
         </svg>
       </div>
-      {category === "verb" && (
+      {selectedCategory === "verb" && (
         <div className={clsx(css[`${variant}BottomWrap`])}>
           <div className={css.radioWrap}>
             <label className={clsx(css.radio, css[`${variant}Radio`])}>
