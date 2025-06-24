@@ -21,7 +21,7 @@ export default function AddWordModal() {
       }}
     >
       <svg className={css.iconClose} onClick={closeModal}>
-        <use href="../../../public/icons/icons.svg#icon-Close" />
+        <use href="/icons/icons.svg#icon-Close" />
       </svg>
       <div className={css.textWrap}>
         <p className={css.title}>Add word</p>

@@ -3,31 +3,55 @@
   flex-direction: column;
   gap: 8px;
 }
+
 .selectWrapper {
-  width: 343px;
   height: 48px;
   position: relative;
 }
+
+.formSelectWrapper {
+  width: 311px;
+}
+
+.dashboardSelectWrapper {
+  width: 343px;
+}
+
 .select {
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(18, 20, 23, 0.1);
   border-radius: 15px;
   padding: 12px 24px;
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
-  color: var(--black);
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
   cursor: pointer;
+  outline: none;
 }
-.select:hover,
-.select:focus {
+
+.formSelect {
+  border: 1px solid #d1d5db;
+  color: var(--white);
+}
+
+.dashboardSelect {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  color: var(--black);
+}
+
+.dashboardSelect:hover,
+.dashboardSelect:focus {
   outline: none;
   border: 1px solid var(--green);
+}
+
+.formSelect:hover,
+.formSelect:focus {
+  border-width: 2px;
 }
 
 .selectIcon {
@@ -40,12 +64,22 @@
   height: 20px;
 }
 
+.formSelectIcon {
+  fill: var(--white);
+}
+
+.dashboardSelectIcon {
+  fill: var(--black);
+}
+
 .radioWrap {
   display: flex;
   flex-direction: row;
   gap: 16px;
   align-items: center;
+  padding-bottom: 16px;
 }
+
 .radio {
   position: relative;
   padding-left: 26px;
@@ -67,11 +101,17 @@
   height: 18px;
   width: 18px;
   background-color: transparent;
-  border: 2px solid rgba(18, 20, 23, 0.1);
   border-radius: 50%;
   transition: 0.2s ease;
 }
 
+.formCustomRadio {
+  border: 2px solid var(--white);
+}
+
+.dashboardCustomRadio {
+  border: 2px solid rgba(18, 20, 23, 0.1);
+}
 .radio input[type="radio"]:checked + .customRadio::after {
   content: "";
   position: absolute;
@@ -82,12 +122,30 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: var(--green);
-}
-.radio input[type="radio"]:checked + .customRadio {
-  border-color: var(--green);
 }
 
+.dashboardRadio input[type="radio"]:checked + .dashboardCustomRadio::after {
+  background-color: var(--green);
+}
+
+.formRadio input[type="radio"]:checked + .formCustomRadio::after {
+  background-color: var(--white);
+}
+.dashboardRadio input[type="radio"]:checked + .dashboardCustomRadio {
+  border-color: var(--green);
+}
+.formRadio input[type="radio"]:checked + .formCustomRadio {
+  border-color: var(--white);
+}
+.formBottomWrap {
+  position: relative;
+}
+.text {
+  font-size: 10px;
+  line-height: 120%;
+  position: absolute;
+  bottom: 0;
+}
 /* ----------Tablet--------- */
 
 @media screen and (min-width: 768px) {

@@ -1,0 +1,89 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 311px;
+}
+
+.labelWrap {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  align-items: center;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+}
+
+.input {
+  border: 1px solid #d1d5db;
+  border-radius: 15px;
+  padding: 12px 24px;
+  background-color: transparent;
+  width: 100%;
+  height: 48px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--white);
+}
+
+.input::placeholder {
+  color: var(--white);
+  line-height: 150%;
+  font-size: 16px;
+}
+
+.input:focus {
+  outline: none;
+  border: 2px solid #d1d5db;
+}
+
+.btnWrap {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.btn {
+  border-radius: 30px;
+  height: 48px;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.addBtn {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 12px 63px;
+  width: 159px;
+}
+
+.cancelBtn {
+  padding: 12px 45px;
+  width: 145px;
+  border: 1px solid rgba(252, 252, 252, 0.4);
+  color: var(--white);
+}
+
+.addBtn:hover {
+  color: var(--green);
+}
+
+.cancelBtn:hover {
+  background-color: var(--white);
+  color: var(--black);
+}

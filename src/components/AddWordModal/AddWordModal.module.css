@@ -11,6 +11,9 @@
   font-size: 16px;
   line-height: 150%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .iconClose {
