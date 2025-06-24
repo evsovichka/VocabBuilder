@@ -1,18 +1,20 @@
-import { useResizeWindow } from "../../utils/resizeWindow";
+import { useResizeWindow } from "../../hooks/resizeWindow.js";
 import Logout from "../Logout/Logout";
 import Navigation from "../Navigation/Navigation.jsx";
 import UserMenu from "../UserMenu/UserMenu.jsx";
 import css from "./MenuModal.module.css";
 import ReactModal from "react-modal";
+import { useModal } from "../../hooks/useModal.js";
 
-export default function MenuModal({ onClose, isOpen, name = "User" }) {
+export default function MenuModal({ name = "User" }) {
   const sizeWindow = useResizeWindow();
   const isMobile = sizeWindow < 768;
+  const { isOpen, closeModal } = useModal();
   return (
     <ReactModal
-      isOpen={isOpen}
+      isOpen={isOpen("menu")}
       ariaHideApp={false}
-      onRequestClose={onClose}
+      onRequestClose={closeModal}
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
       className={css.modal}
@@ -28,14 +30,14 @@ export default function MenuModal({ onClose, isOpen, name = "User" }) {
         <svg
           width={isMobile ? 32 : 40}
           height={isMobile ? 32 : 40}
-          onClick={onClose}
+          onClick={closeModal}
         >
           <use href="/icons/icons.svg#icon-Close" />
         </svg>
       </div>
       <div className={css.navigationWrap}>
         <Navigation />
-        <Logout />
+        <Logout closeModal={closeModal} />
       </div>
     </ReactModal>
   );

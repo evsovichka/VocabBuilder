@@ -1,8 +1,8 @@
 import illustration from "../../assets/images/loginIllustration.svg";
-import { useResizeWindow } from "../../utils/resizeWindow.js";
+import { useResizeWindow } from "../../hooks/resizeWindow.js";
 import RegisterForm from "../../components/RegisterForm/RegisterForm.jsx";
 import css from "./RegisterPage.module.css";
-import { useKeyboardVisible } from "../../utils/keyboardVisible.js";
+import { useKeyboardVisible } from "../../hooks/keyboardVisible.js";
 
 export default function RegisterPage() {
   const sizeWindow = useResizeWindow();

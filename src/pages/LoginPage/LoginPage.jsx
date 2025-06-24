@@ -1,8 +1,8 @@
 import illustration from "../../assets/images/loginIllustration.svg";
 import LoginForm from "../../components/LoginForm/LoginForm.jsx";
-import { useResizeWindow } from "../../utils/resizeWindow.js";
+import { useResizeWindow } from "../../hooks/resizeWindow.js";
 import css from "./LoginPage.module.css";
-import { useKeyboardVisible } from "../../utils/keyboardVisible.js";
+import { useKeyboardVisible } from "../../hooks/keyboardVisible.js";
 
 export default function LoginPage() {
   const sizeWindow = useResizeWindow();

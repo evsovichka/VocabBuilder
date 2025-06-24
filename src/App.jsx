@@ -3,7 +3,6 @@ import { Suspense, lazy, useEffect } from "react";
 import "./App.css";
 import AppBar from "./components/AppBar/AppBar.jsx";
 import MenuModal from "./components/MenuModal/MenuModal.jsx";
-import { useToggle } from "./hooks/useToggle.js";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsLoggedIn,
@@ -34,7 +33,6 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
-  const { isOpen, toggle } = useToggle();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -47,7 +45,7 @@ function App() {
     <p>Please wait for refreshing user...</p>
   ) : (
     <>
-      <AppBar onOpen={toggle} />
+      <AppBar />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route
@@ -98,7 +96,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
       </Suspense>
-      {isLoggedIn && <MenuModal onClose={toggle} isOpen={isOpen} />}
+      {isLoggedIn && <MenuModal />}
     </>
   );
 }
