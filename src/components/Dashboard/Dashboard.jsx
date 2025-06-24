@@ -5,11 +5,12 @@ import ActionButton from "../ui/ActionButton/ActionButton.jsx";
 import css from "./Dashboard.module.css";
 import { useSelector } from "react-redux";
 import { selectStatistics } from "../../redux/words/selectors.js";
+import { useModal } from "../../hooks/useModal.js";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const totalCount = useSelector(selectStatistics);
-
+  const { openModal } = useModal();
   const handleTrainBtnClick = () => {
     navigate("/training");
   };
@@ -25,7 +26,11 @@ export default function Dashboard() {
           <p className={css.totalCount}>{totalCount}</p>
         </div>
         <div className={css.buttonBox}>
-          <ActionButton svgName="icon-plus" className="dashboardBtn">
+          <ActionButton
+            svgName="icon-plus"
+            className="dashboardBtn"
+            onClick={() => openModal("addWord")}
+          >
             Add word
           </ActionButton>
           <ActionButton

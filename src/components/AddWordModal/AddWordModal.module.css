@@ -1,0 +1,40 @@
+.modal {
+  width: 343px;
+  border-radius: 15px;
+  background: var(--green);
+  padding: 48px 16px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+  font-size: 16px;
+  line-height: 150%;
+  position: relative;
+}
+
+.iconClose {
+  width: 24px;
+  height: 24px;
+  stroke: var(--white);
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.iconClose:hover {
+  transform: scale(1.1);
+}
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+}
