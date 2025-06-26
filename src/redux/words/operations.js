@@ -12,3 +12,15 @@ export const getStatistics = createAsyncThunk(
     }
   }
 );
+
+export const createWord = createAsyncThunk(
+  "words/createWord",
+  async (payload, thunkApi) => {
+    try {
+      const { data } = await axios.post("words/create", payload);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

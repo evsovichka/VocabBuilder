@@ -4,12 +4,15 @@ import css from "./AddWordForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import addWordSchema from "./validation.js";
+import { useDispatch } from "react-redux";
+import { createWord } from "../../redux/words/operations.js";
 
 export default function AddWordForm({ closeModal }) {
   const [category, setCategory] = useState("");
   const [verbType, setVerbType] = useState("regular");
   const [categoryError, setCategoryError] = useState(false);
   const id = useId();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -39,6 +42,8 @@ export default function AddWordForm({ closeModal }) {
         isIrregullar: verbType === "irregular",
       }),
     };
+
+    dispatch(createWord(formattedData));
     console.log(formattedData);
     reset();
     setCategory("");

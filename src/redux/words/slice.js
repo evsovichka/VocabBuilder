@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getStatistics } from "./operations.js";
+import { createWord, getStatistics } from "./operations.js";
 
 const initialState = {
   items: [],
@@ -22,6 +22,18 @@ const wordsSlice = createSlice({
         state.totalCount = action.payload.totalCount;
       })
       .addCase(getStatistics.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      })
+      .addCase(createWord.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+      })
+      .addCase(createWord.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = action.payload;
+      })
+      .addCase(createWord.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });
