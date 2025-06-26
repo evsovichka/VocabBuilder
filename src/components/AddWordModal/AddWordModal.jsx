@@ -30,7 +30,7 @@ export default function AddWordModal() {
           the language base and expanding the vocabulary.
         </p>
       </div>
-      <AddWordForm />
+      <AddWordForm closeModal={closeModal} />
     </ReactModal>
   );
 }
