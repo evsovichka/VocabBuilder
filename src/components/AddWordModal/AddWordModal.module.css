@@ -41,3 +41,31 @@
   line-height: 117%;
   letter-spacing: -0.02em;
 }
+
+/* -----------------Tablet----------------- */
+@media screen and (min-width: 768px) {
+  .modal {
+    padding: 48px 64px;
+    width: 627px;
+    border-radius: 30px;
+    font-size: 20px;
+    gap: 32px;
+  }
+
+  .iconClose {
+    width: 32px;
+    height: 32px;
+    top: 20px;
+    right: 20px;
+  }
+  .textWrap {
+    gap: 20px;
+  }
+  .title {
+    font-size: 40px;
+    line-height: 120%;
+  }
+  .text {
+    color: rgba(252, 252, 252, 0.8);
+  }
+}

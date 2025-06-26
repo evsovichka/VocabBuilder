@@ -25,7 +25,7 @@ export default function AddWordModal() {
       </svg>
       <div className={css.textWrap}>
         <p className={css.title}>Add word</p>
-        <p>
+        <p className={css.text}>
           Adding a new word to the dictionary is an important step in enriching
           the language base and expanding the vocabulary.
         </p>

@@ -6,11 +6,14 @@ import css from "./Dashboard.module.css";
 import { useSelector } from "react-redux";
 import { selectStatistics } from "../../redux/words/selectors.js";
 import { useModal } from "../../hooks/useModal.js";
+import { useState } from "react";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const totalCount = useSelector(selectStatistics);
   const { openModal } = useModal();
+  const [category, setCategory] = useState("");
+  const [verbType, setVerbType] = useState("regular");
 
   const handleTrainBtnClick = () => {
     navigate("/training");
@@ -21,10 +24,10 @@ export default function Dashboard() {
       <div className={css.filterWrap}>
         <SearchInput />
         <CategoriesList
-          // category={category}
-          // type={type}
-          // handleChangeType={handleChangeType}
-          // handleChangeCategory={handleChangeCategory}
+          category={category}
+          type={verbType}
+          handleChangeVerbType={(e) => setVerbType(e.target.value)}
+          handleChangeCategory={(value) => setCategory(value)}
           variant="dashboard"
         />
       </div>

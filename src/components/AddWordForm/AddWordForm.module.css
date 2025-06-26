@@ -100,3 +100,48 @@
   background-color: var(--white);
   color: var(--black);
 }
+
+/* -----------------Tablet----------------- */
+@media screen and (min-width: 768px) {
+  .inputWrap {
+    flex-direction: row-reverse;
+    gap: 32px;
+    width: 500px;
+    justify-content: start;
+  }
+  .input {
+    width: 354px;
+    height: 56px;
+  }
+
+  .labelWrap {
+    font-size: 16px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btnWrap {
+    gap: 10px;
+  }
+
+  .btn {
+    height: 56px;
+    font-size: 18px;
+  }
+
+  .addBtn {
+    padding: 14px 105px;
+    width: 245px;
+  }
+
+  .cancelBtn {
+    padding: 14px 92px;
+    width: 245px;
+  }
+  .error {
+    left: 10px;
+  }
+}

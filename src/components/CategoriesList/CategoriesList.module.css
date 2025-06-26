@@ -1,10 +1,10 @@
-.wrap {
+.formWrap,
+.dashboardWrap {
   display: flex;
   flex-direction: column;
   gap: 8px;
   position: relative;
 }
-
 .selectWrapper {
   height: 48px;
   position: relative;
@@ -21,12 +21,15 @@
   width: 100%;
   height: 100%;
   border-radius: 15px;
-  padding: 12px 24px;
+  padding: 12px 44px 12px 24px;
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
   background: none;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .formCustomSelect {
@@ -49,7 +52,9 @@
 .formCustomSelect:focus {
   border-width: 2px;
 }
-
+.errorInput {
+  border-color: var(--red);
+}
 .dropDown {
   border-radius: 15px;
   padding: 12px 24px 12px 12px;
@@ -59,7 +64,6 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
-
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -197,19 +201,29 @@
 /* ----------Tablet--------- */
 
 @media screen and (min-width: 768px) {
-  .wrap {
+  .dashboardWrap {
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
   }
 
-  .selectWrapper {
+  .dashboardSelectWrapper {
     width: 164px;
   }
-  .select {
-    padding: 12px 46px 12px 24px;
+  .formSelectWrapper {
+    width: 204px;
+  }
+  .error {
+    left: 10px;
+  }
+
+  .formDropDown {
+    width: 205px;
+    height: 240px;
+  }
+  .dashboardDropDown {
+    width: 189px;
   }
   .radioWrap {
-    width: 179px;
-    height: 20px;
+    font-size: 16px;
   }
 }

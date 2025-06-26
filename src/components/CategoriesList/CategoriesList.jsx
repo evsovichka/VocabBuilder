@@ -17,10 +17,14 @@ export default function CategoriesList({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={css.wrap}>
-      <div className={css.selectWrapper}>
+    <div className={clsx(css.wrap, css[`${variant}Wrap`])}>
+      <div className={clsx(css.selectWrapper, css[`${variant}SelectWrapper`])}>
         <div
-          className={clsx(css.customSelect, css[`${variant}CustomSelect`])}
+          className={clsx(
+            css.customSelect,
+            css[`${variant}CustomSelect`],
+            hasError ? css.errorInput : ""
+          )}
           onClick={() => setIsOpen((prev) => !prev)}
         >
           {capitalize(category) || "Categories"}
