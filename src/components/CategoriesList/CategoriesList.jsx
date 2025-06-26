@@ -2,7 +2,7 @@ import css from "./CategoriesList.module.css";
 import { useSelector } from "react-redux";
 import { selectCategoriesItems } from "../../redux/categories/selectors.js";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { capitalize } from "../../utils/capitalize.js";
 
 export default function CategoriesList({
@@ -15,9 +15,24 @@ export default function CategoriesList({
 }) {
   const categories = useSelector(selectCategoriesItems);
   const [isOpen, setIsOpen] = useState(false);
+  const selectRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (selectRef.current && !selectRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div className={clsx(css.wrap, css[`${variant}Wrap`])}>
+    <div className={clsx(css.wrap, css[`${variant}Wrap`])} ref={selectRef}>
       <div className={clsx(css.selectWrapper, css[`${variant}SelectWrapper`])}>
         <div
           className={clsx(
