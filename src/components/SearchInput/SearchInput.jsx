@@ -5,6 +5,12 @@ import { selectKeyword } from "../../redux/filters/selectors";
 import { setKeyword } from "../../redux/filters/slice";
 import { fetchAllWords } from "../../redux/words/operations";
 import { selectFilters } from "../../redux/filters/selectors";
+// const trimmed = keyword.trim();
+// if (trimmed === "") {
+//   return;
+// }
+// const updateFilter = { ...filters, keyword: trimmed };
+// console.log({ ...filters, keyword: trimmed, page });
 
 export default function SearchInput({ value }) {
   const keyword = useSelector(selectKeyword);
@@ -12,20 +18,14 @@ export default function SearchInput({ value }) {
 
   const filters = useSelector(selectFilters);
 
-  const page = 1;
-
   const handleSearch = (e) => {
-    dispatch(setKeyword(e.target.value));
+    dispatch(setKeyword(e.target.value.trim()));
   };
 
   useEffect(() => {
-    const trimmed = keyword.trim();
-    if (trimmed === "") {
-      return;
-    }
-    console.log({ ...filters, keyword: trimmed, page });
     const timer = setTimeout(() => {
-      dispatch(fetchAllWords({ ...filters, keyword: trimmed, page }));
+      dispatch(fetchAllWords({ filters }));
+      console.log("begin");
     }, 300);
 
     return () => clearTimeout(timer);
