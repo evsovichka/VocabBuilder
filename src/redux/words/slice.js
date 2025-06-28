@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createWord, getStatistics } from "./operations.js";
+import { createWord, fetchAllWords, getStatistics } from "./operations.js";
 
 const initialState = {
   items: [],
@@ -31,9 +31,21 @@ const wordsSlice = createSlice({
       })
       .addCase(createWord.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload;
+        state.items.push(action.payload);
       })
       .addCase(createWord.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      })
+      .addCase(fetchAllWords.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+      })
+      .addCase(fetchAllWords.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = action.payload.results;
+      })
+      .addCase(fetchAllWords.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });

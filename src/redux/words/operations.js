@@ -24,3 +24,15 @@ export const createWord = createAsyncThunk(
     }
   }
 );
+
+export const fetchAllWords = createAsyncThunk(
+  "words/fetchAll",
+  async (_, thunkApi) => {
+    try {
+      const { data } = await axios.get("words/own");
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.messages);
+    }
+  }
+);
