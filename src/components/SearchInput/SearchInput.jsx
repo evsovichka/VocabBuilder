@@ -1,6 +1,6 @@
 import css from "./SearchInput.module.css";
 
-export default function SearchInput({ onSearch }) {
+export default function SearchInput({ onSearch, value }) {
   return (
     <div className={css.wrap}>
       <input
@@ -8,6 +8,7 @@ export default function SearchInput({ onSearch }) {
         placeholder="Find the word"
         className={css.input}
         onChange={onSearch}
+        value={value}
       />
       <svg width="20" height="20">
         <use href="/icons/icons.svg#icon-search" />

@@ -3,60 +3,58 @@ import CategoriesList from "../CategoriesList/CategoriesList.jsx";
 import SearchInput from "../SearchInput/SearchInput.jsx";
 import ActionButton from "../ui/ActionButton/ActionButton.jsx";
 import css from "./Dashboard.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectStatistics } from "../../redux/words/selectors.js";
 import { useModal } from "../../hooks/useModal.js";
 import { useState } from "react";
+import {
+  setCategory,
+  setIsIrregular,
+  setKeyword,
+} from "../../redux/filters/slice.js";
+import {
+  selectCategory,
+  selectKeyword,
+} from "../../redux/filters/selectors.js";
 
 export default function Dashboard() {
-  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  const totalCount = useSelector(selectStatistics);
+  const dispatch = useDispatch();
   const { openModal } = useModal();
+
   const [verbType, setVerbType] = useState("regular");
 
-  const category = searchParams.get("category") || "";
-  // const keyword = searchParams.get("keyword") || "";
+  const totalCount = useSelector(selectStatistics);
 
-  const updateSearchParams = (key, value) => {
-    const currentParams = new URLSearchParams(window.location.search);
-
-    if (value === "" || value === null) {
-      currentParams.delete(key);
-    } else {
-      currentParams.set(key, value);
-    }
-
-    setSearchParams(currentParams);
-  };
+  const category = useSelector(selectCategory);
+  const keyword = useSelector(selectKeyword);
+  // const isIrregular = useSelector(selectIsIrregular);
 
   const handleSearch = (e) => {
-    updateSearchParams("keyword", e.target.value.trim());
+    dispatch(setKeyword(e.target.value.trim()));
   };
+
   const handleChangeCategory = (value) => {
+    dispatch(setCategory(value));
+
     if (value !== "verb") {
-      updateSearchParams("isIrregular", "");
+      dispatch(setIsIrregular(null));
+      setVerbType("regular");
     } else {
-      updateSearchParams(
-        "isIrregular",
-        verbType === "irregular" ? "true" : "false"
-      );
+      dispatch(setIsIrregular(verbType === "irregular"));
     }
-    updateSearchParams("category", value);
   };
 
   const handleChangeVerbType = (e) => {
-    setVerbType(e.target.value);
-    updateSearchParams("isIrregular", e.target.value === "irregular");
+    const value = e.target.value;
+    setVerbType(value);
+    dispatch(setIsIrregular(value === "irregular"));
   };
 
-  const handleTrainBtnClick = () => {
-    navigate("/training");
-  };
   return (
     <div className={css.wrap}>
       <div className={css.filterWrap}>
-        <SearchInput onSearch={handleSearch} />
+        <SearchInput onSearch={handleSearch} value={keyword} />
         <CategoriesList
           category={category}
           type={verbType}
@@ -81,7 +79,9 @@ export default function Dashboard() {
           <ActionButton
             svgName="icon-arrow-right"
             className="dashboardBtn"
-            onClick={handleTrainBtnClick}
+            onClick={() => {
+              navigate("/training");
+            }}
           >
             Train oneself
           </ActionButton>
