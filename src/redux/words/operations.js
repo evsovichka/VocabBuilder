@@ -27,12 +27,21 @@ export const createWord = createAsyncThunk(
 
 export const fetchAllWords = createAsyncThunk(
   "words/fetchAll",
-  async (_, thunkApi) => {
+  async ({ filters, page = 1 }, thunkApi) => {
+    const { category, keyword, isIrregular } = filters;
+
+    const params = {
+      limit: 7,
+      page,
+      ...(category && { category }),
+      ...(keyword && { keyword }),
+      ...(typeof isIrregular === "booleans" && { isIrregular }),
+    };
     try {
-      const { data } = await axios.get("words/own");
+      const { data } = await axios.get("words/own", { params });
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.messages);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

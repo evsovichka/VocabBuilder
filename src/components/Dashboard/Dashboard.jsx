@@ -14,8 +14,10 @@ import {
 } from "../../redux/filters/slice.js";
 import {
   selectCategory,
+  selectFilters,
   selectKeyword,
 } from "../../redux/filters/selectors.js";
+import { fetchAllWords } from "../../redux/words/operations.js";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -28,11 +30,17 @@ export default function Dashboard() {
 
   const category = useSelector(selectCategory);
   const keyword = useSelector(selectKeyword);
+  const filters = useSelector(selectFilters);
   // const isIrregular = useSelector(selectIsIrregular);
 
-  const handleSearch = (e) => {
-    dispatch(setKeyword(e.target.value.trim()));
-  };
+  // const handleSearch = (e) => {
+  //   dispatch(setKeyword(e.target.value.trim()));
+
+  //   setTimeout(() => {
+  //     dispatch(fetchAllWords(filters));
+  //     console.log("time");
+  //   }, 300);
+  // };
 
   const handleChangeCategory = (value) => {
     dispatch(setCategory(value));
@@ -54,7 +62,7 @@ export default function Dashboard() {
   return (
     <div className={css.wrap}>
       <div className={css.filterWrap}>
-        <SearchInput onSearch={handleSearch} value={keyword} />
+        <SearchInput value={keyword} />
         <CategoriesList
           category={category}
           type={verbType}
