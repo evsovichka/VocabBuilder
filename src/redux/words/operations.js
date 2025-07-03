@@ -35,7 +35,7 @@ export const fetchAllWords = createAsyncThunk(
       page,
       ...(category && { category }),
       ...(keyword && { keyword }),
-      ...(typeof isIrregular === "booleans" && { isIrregular }),
+      ...(typeof isIrregular === "boolean" && { isIrregular }),
     };
     try {
       const { data } = await axios.get("words/own", { params });

@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CategoriesList from "../CategoriesList/CategoriesList.jsx";
 import SearchInput from "../SearchInput/SearchInput.jsx";
 import ActionButton from "../ui/ActionButton/ActionButton.jsx";
@@ -7,17 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectStatistics } from "../../redux/words/selectors.js";
 import { useModal } from "../../hooks/useModal.js";
 import { useState } from "react";
-import {
-  setCategory,
-  setIsIrregular,
-  setKeyword,
-} from "../../redux/filters/slice.js";
+import { setCategory, setIsIrregular } from "../../redux/filters/slice.js";
 import {
   selectCategory,
-  selectFilters,
   selectKeyword,
 } from "../../redux/filters/selectors.js";
-import { fetchAllWords } from "../../redux/words/operations.js";
+// import { fetchAllWords } from "../../redux/words/operations.js";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -30,7 +25,7 @@ export default function Dashboard() {
 
   const category = useSelector(selectCategory);
   const keyword = useSelector(selectKeyword);
-  const filters = useSelector(selectFilters);
+  // const filters = useSelector(selectFilters);
   // const isIrregular = useSelector(selectIsIrregular);
 
   // const handleSearch = (e) => {

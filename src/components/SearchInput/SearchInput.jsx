@@ -25,7 +25,6 @@ export default function SearchInput({ value }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(fetchAllWords({ filters }));
-      console.log("begin");
     }, 300);
 
     return () => clearTimeout(timer);

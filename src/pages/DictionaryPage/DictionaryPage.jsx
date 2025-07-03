@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { fetchCategories } from "../../redux/categories/operations.js";
 import { fetchAllWords, getStatistics } from "../../redux/words/operations.js";
 import { selectFilters } from "../../redux/filters/selectors.js";
+import WordTable from "../../components/WordTable/WordTable.tsx";
 
 export default function DictionaryPage() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export default function DictionaryPage() {
   return (
     <section className="container">
       <Dashboard />
+      <WordTable />
     </section>
   );
 }
