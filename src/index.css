@@ -43,6 +43,16 @@ img {
   height: auto;
 }
 
+th,
+td {
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 @font-face {
   font-family: "Fixel";
   src: url("/fonts/FixelDisplay-Regular.woff2") format("woff2"),

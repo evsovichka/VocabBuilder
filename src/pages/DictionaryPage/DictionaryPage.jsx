@@ -5,7 +5,8 @@ import { fetchCategories } from "../../redux/categories/operations.js";
 import { fetchAllWords, getStatistics } from "../../redux/words/operations.js";
 import { selectFilters } from "../../redux/filters/selectors.js";
 import WordTable from "../../components/WordTable/WordTable.tsx";
-
+import css from "./DictionaryPage.module.css";
+import clsx from "clsx";
 export default function DictionaryPage() {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
@@ -18,7 +19,7 @@ export default function DictionaryPage() {
   }, [dispatch]);
 
   return (
-    <section className="container">
+    <section className={clsx("container", css.wrap)}>
       <Dashboard />
       <WordTable />
     </section>

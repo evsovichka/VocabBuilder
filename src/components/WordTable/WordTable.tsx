@@ -8,6 +8,8 @@ import { capitalize } from "../../utils/capitalize";
 import { selectAllWords } from "../../redux/words/selectors";
 import { useSelector } from "react-redux";
 import { useMemo } from "react";
+import css from "./WordTable.module.css";
+import { useResizeWindow } from "../../hooks/resizeWindow";
 
 export default function WordTable() {
   type Word = {
@@ -20,36 +22,59 @@ export default function WordTable() {
 
   const columnHelper = createColumnHelper<Word>();
 
-  const columns = useMemo(
-    () => [
+  const sizeWindow = useResizeWindow();
+  const isMobile = sizeWindow < 768;
+  const columns = useMemo(() => {
+    const cols = [
       columnHelper.accessor("en", {
-        header: () => <span>Word</span>,
+        header: () => (
+          <span className={`${css.header} ${css.firstheader}`}>
+            Word
+            {!isMobile && (
+              <svg className={css.icon}>
+                <use href="/icons/icons.svg#icon-united-kingdom" />
+              </svg>
+            )}
+          </span>
+        ),
         cell: (props) => capitalize(props.getValue()),
       }),
       columnHelper.accessor("ua", {
-        header: () => <span>Translation</span>,
+        header: () => (
+          <span className={css.header}>
+            Translation
+            {!isMobile && (
+              <svg className={css.icon}>
+                <use href="/icons/icons.svg#icon-ukraine" />
+              </svg>
+            )}
+          </span>
+        ),
         cell: (props) => capitalize(props.getValue()),
       }),
-      columnHelper.accessor("category", {
-        header: () => <span>Category</span>,
-        cell: (props) => capitalize(props.getValue()),
-      }),
+      !isMobile &&
+        columnHelper.accessor("category", {
+          header: () => <span className={css.header}>Category</span>,
+          cell: (props) => capitalize(props.getValue()),
+        }),
       columnHelper.accessor("progress", {
-        header: () => <span>Progress</span>,
+        header: () => <span className={css.header}>Progress</span>,
         cell: (props) => props.getValue(),
       }),
       columnHelper.display({
         id: "actions",
-        header: () => null,
+        header: () => (
+          <span className={`${css.header} ${css.lastheader}`}></span>
+        ),
         cell: (props) => {
           return (
             <button onClick={() => console.log(props.row.original)}>...</button>
           );
         },
       }),
-    ],
-    []
-  );
+    ];
+    return cols.filter(Boolean);
+  }, [isMobile]);
   const data: Word[] = useSelector(selectAllWords);
   const sortedData = useMemo(() => {
     return [...data].sort((a, b) => a.en.localeCompare(b.en));
@@ -61,34 +86,36 @@ export default function WordTable() {
   });
 
   return (
-    <table>
-      <thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table.getRowModel().rows.map((row) => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map((cell) => (
-              <td key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <section className={css.tableWrap}>
+      <table className={css.table}>
+        <thead className={css.thead}>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id} className={css.tr}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id} className={css.th}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody className={css.tbody}>
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id} className={css.tr}>
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id} className={css.td}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
   );
 }
