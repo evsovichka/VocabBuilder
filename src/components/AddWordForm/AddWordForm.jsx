@@ -39,12 +39,11 @@ export default function AddWordForm({ closeModal }) {
       ua: data.ua.trim(),
       category: category,
       ...(category === "verb" && {
-        isIrregullar: verbType === "irregular",
+        isIrregular: verbType === "irregular",
       }),
     };
 
     dispatch(createWord(formattedData));
-    console.log(formattedData);
     reset();
     setCategory("");
     setVerbType("regular");
