@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { useMemo } from "react";
 import css from "./WordTable.module.css";
 import { useResizeWindow } from "../../hooks/resizeWindow";
+import ActionsBtn from "../ActionsBtn/ActionsBtn";
 
 export default function WordTable() {
   type Word = {
@@ -67,9 +68,7 @@ export default function WordTable() {
           <span className={`${css.header} ${css.lastheader}`}></span>
         ),
         cell: (props) => {
-          return (
-            <button onClick={() => console.log(props.row.original)}>...</button>
-          );
+          return <ActionsBtn data={props.row.original} />;
         },
       }),
     ];
