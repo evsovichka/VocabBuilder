@@ -1,0 +1,189 @@
+.modal {
+  border-radius: 15px;
+  width: 342px;
+  background: var(--green);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+  padding: 48px 16px;
+}
+
+.iconClose {
+  width: 24px;
+  height: 24px;
+  stroke: var(--white);
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.iconClose:hover {
+  transform: scale(1.1);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--white);
+}
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 311px;
+  position: relative;
+}
+
+.labelWrap {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  align-items: center;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+}
+
+.input {
+  border: 1px solid #d1d5db;
+  border-radius: 15px;
+  padding: 12px 24px;
+  background-color: transparent;
+  width: 100%;
+  height: 48px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--white);
+}
+
+.input::placeholder {
+  color: var(--white);
+  line-height: 150%;
+  font-size: 16px;
+}
+
+.input:focus {
+  outline: none;
+  border: 2px solid #d1d5db;
+}
+
+.error {
+  position: absolute;
+  bottom: -14px;
+  right: 10px;
+  font-size: 10px;
+  color: var(--red);
+}
+
+.inputError {
+  border-color: var(--red);
+}
+
+.btnWrap {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.btn {
+  border-radius: 30px;
+  height: 48px;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.addBtn {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 12px 63px;
+  width: 159px;
+}
+
+.cancelBtn {
+  padding: 12px 45px;
+  width: 145px;
+  border: 1px solid rgba(252, 252, 252, 0.4);
+  color: var(--white);
+}
+
+.addBtn:hover {
+  color: var(--green);
+}
+
+.cancelBtn:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* -----------------Tablet----------------- */
+@media screen and (min-width: 768px) {
+  .modal {
+    border-radius: 30px;
+    width: 627px;
+    padding: 64px;
+  }
+
+  .iconClose {
+    width: 32px;
+    height: 32px;
+  }
+
+  .form {
+    gap: 18px;
+  }
+  .inputWrap {
+    flex-direction: row-reverse;
+    gap: 32px;
+    width: 500px;
+    justify-content: start;
+  }
+  .input {
+    width: 354px;
+    height: 56px;
+  }
+
+  .labelWrap {
+    font-size: 16px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btnWrap {
+    gap: 10px;
+    padding-top: 14px;
+  }
+
+  .btn {
+    height: 56px;
+    font-size: 18px;
+  }
+
+  .addBtn {
+    padding: 14px 105px;
+    width: 245px;
+  }
+
+  .cancelBtn {
+    padding: 14px 92px;
+    width: 245px;
+  }
+  .error {
+    left: 10px;
+  }
+}

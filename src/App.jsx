@@ -12,6 +12,7 @@ import { refreshUser } from "./redux/auth/operations.js";
 import RestrictedRoute from "./components/RestrictedRoute.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import AddWordModal from "./components/AddWordModal/AddWordModal.jsx";
+import EditWordModal from "./components/EditWordModal/EditWordModal.jsx";
 
 const RegisterPage = lazy(() =>
   import("./pages/RegisterPage/RegisterPage.jsx")
@@ -99,6 +100,7 @@ function App() {
       </Suspense>
       {isLoggedIn && <MenuModal />}
       <AddWordModal />
+      <EditWordModal />
     </>
   );
 }

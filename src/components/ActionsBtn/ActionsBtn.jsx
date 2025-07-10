@@ -3,13 +3,20 @@ import { BsThreeDots } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { deleteWord } from "../../redux/words/operations.js";
 import { useEffect, useRef } from "react";
+import { useModal } from "../../hooks/useModal.js";
 
 export default function ActionsBtn({ data, setOpenId, isOpen }) {
   const { _id } = data;
   const dispatch = useDispatch();
+  const { openModal } = useModal();
 
-  const handleDelete = (_id) => {
+  const handleDelete = () => {
     dispatch(deleteWord(_id));
+    setOpenId(null);
+  };
+
+  const handleOpenEditModal = () => {
+    openModal("editWord");
     setOpenId(null);
   };
 
@@ -20,30 +27,30 @@ export default function ActionsBtn({ data, setOpenId, isOpen }) {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (selectRef.current && !selectRef.current.contains(event.target)) {
-        setOpenId(null);
-      }
+      setTimeout(() => {
+        if (selectRef.current && !selectRef.current.contains(event.target)) {
+          setOpenId(null);
+        }
+      }, 2000);
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-
   return (
     <div className={css.wrap} ref={selectRef}>
       <BsThreeDots className={css.dotsIcon} onClick={togglePopUp} />
       {isOpen && (
         <ul className={css.popUp}>
-          <li className={css.popUpItem}>
+          <li className={css.popUpItem} onClick={handleOpenEditModal}>
             <svg className={css.popUpIcon}>
               <use href="/icons/icons.svg#icon-edit" />
             </svg>
             Edit
           </li>
-          <li className={css.popUpItem} onClick={() => handleDelete(_id)}>
+          <li className={css.popUpItem} onClick={() => handleDelete()}>
             <svg className={css.popUpIcon}>
               <use href="/icons/icons.svg#icon-trash" />
             </svg>
