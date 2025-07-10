@@ -7,14 +7,14 @@ import {
 import { capitalize } from "../../utils/capitalize";
 import { selectAllWords } from "../../redux/words/selectors";
 import { useSelector } from "react-redux";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import css from "./WordTable.module.css";
 import { useResizeWindow } from "../../hooks/resizeWindow";
 import ActionsBtn from "../ActionsBtn/ActionsBtn";
 
 export default function WordTable() {
   type Word = {
-    id: string;
+    _id: string;
     en: string;
     ua: string;
     category: string;
@@ -25,6 +25,17 @@ export default function WordTable() {
 
   const sizeWindow = useResizeWindow();
   const isMobile = sizeWindow < 768;
+
+  const [openId, setOpenId] = useState(null);
+
+  const actionCell = (row) => (
+    <ActionsBtn
+      data={row.original}
+      setOpenId={setOpenId}
+      isOpen={openId === row.original._id}
+    />
+  );
+
   const columns = useMemo(() => {
     const cols = [
       columnHelper.accessor("en", {
@@ -67,13 +78,11 @@ export default function WordTable() {
         header: () => (
           <span className={`${css.header} ${css.lastheader}`}></span>
         ),
-        cell: (props) => {
-          return <ActionsBtn data={props.row.original} />;
-        },
+        cell: (props) => actionCell(props.row),
       }),
     ];
     return cols.filter(Boolean);
-  }, [isMobile]);
+  }, [isMobile, openId]);
   const data: Word[] = useSelector(selectAllWords);
   const sortedData = useMemo(() => {
     return [...data].sort((a, b) => a.en.localeCompare(b.en));

@@ -68,3 +68,11 @@
     line-height: 150%;
   }
 }
+
+/* -------------Desktop------------- */
+
+@media screen and (min-width: 1440px) {
+  .popUp {
+    right: 10px;
+  }
+}

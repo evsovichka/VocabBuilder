@@ -1,24 +1,40 @@
-import { useState } from "react";
 import css from "./ActionsBtn.module.css";
 import { BsThreeDots } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { deleteWord } from "../../redux/words/operations.js";
+import { useEffect, useRef } from "react";
 
-export default function ActionsBtn({ data }) {
+export default function ActionsBtn({ data, setOpenId, isOpen }) {
   const { _id } = data;
-  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
   const handleDelete = (_id) => {
     dispatch(deleteWord(_id));
-    setIsOpen(false);
+    setOpenId(null);
   };
+
+  const togglePopUp = () => {
+    setOpenId((prev) => (prev === _id ? null : _id));
+  };
+  const selectRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (selectRef.current && !selectRef.current.contains(event.target)) {
+        setOpenId(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className={css.wrap}>
-      <BsThreeDots
-        className={css.dotsIcon}
-        onClick={() => setIsOpen((prev) => !prev)}
-      />
+    <div className={css.wrap} ref={selectRef}>
+      <BsThreeDots className={css.dotsIcon} onClick={togglePopUp} />
       {isOpen && (
         <ul className={css.popUp}>
           <li className={css.popUpItem}>
