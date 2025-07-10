@@ -57,3 +57,15 @@ export const deleteWord = createAsyncThunk(
     }
   }
 );
+
+export const editWord = createAsyncThunk(
+  "words/edit",
+  async (payload, thunkApi) => {
+    try {
+      const { data } = axios.patch(`words/edit/${payload.id}`, payload);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

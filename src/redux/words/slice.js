@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   createWord,
   deleteWord,
+  editWord,
   fetchAllWords,
   getStatistics,
 } from "./operations.js";
@@ -65,6 +66,22 @@ const wordsSlice = createSlice({
         );
       })
       .addCase(deleteWord.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      })
+      .addCase(editWord.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+      })
+      .addCase(editWord.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = state.items.find((item) => {
+          if (item._id === action.payload.id) {
+            item = action.payload;
+          }
+        });
+      })
+      .addCase(editWord.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });
