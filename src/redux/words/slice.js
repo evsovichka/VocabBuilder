@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createWord, fetchAllWords, getStatistics } from "./operations.js";
+import {
+  createWord,
+  deleteWord,
+  fetchAllWords,
+  getStatistics,
+} from "./operations.js";
 
 const initialState = {
   items: [],
@@ -46,6 +51,20 @@ const wordsSlice = createSlice({
         state.items = action.payload.results;
       })
       .addCase(fetchAllWords.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      })
+      .addCase(deleteWord.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+      })
+      .addCase(deleteWord.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = state.items.filter(
+          (item) => item._id !== action.payload.id
+        );
+      })
+      .addCase(deleteWord.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });

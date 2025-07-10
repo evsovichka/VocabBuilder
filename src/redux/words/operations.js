@@ -45,3 +45,15 @@ export const fetchAllWords = createAsyncThunk(
     }
   }
 );
+
+export const deleteWord = createAsyncThunk(
+  "words/delete",
+  async (id, thunkApi) => {
+    try {
+      const { data } = await axios.delete(`words/delete/${id}`);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
