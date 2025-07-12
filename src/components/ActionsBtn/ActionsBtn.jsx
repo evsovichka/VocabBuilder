@@ -1,7 +1,7 @@
 import css from "./ActionsBtn.module.css";
 import { BsThreeDots } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { deleteWord } from "../../redux/words/operations.js";
+import { deleteWord, getStatistics } from "../../redux/words/operations.js";
 import { useEffect, useRef } from "react";
 import { useModal } from "../../hooks/useModal.js";
 import { setSelectedWord } from "../../redux/SelectedWord/slice";
@@ -13,6 +13,7 @@ export default function ActionsBtn({ data, setOpenId, isOpen }) {
 
   const handleDelete = () => {
     dispatch(deleteWord(_id));
+    dispatch(getStatistics());
     setOpenId(null);
   };
 
