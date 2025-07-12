@@ -43,7 +43,9 @@ export default function AddWordForm({ closeModal }) {
       }),
     };
 
-    dispatch(createWord(formattedData));
+    dispatch(createWord(formattedData))
+      .unwrap()
+      .then(() => dispatch(getStatistics()));
     reset();
     setCategory("");
     setVerbType("regular");

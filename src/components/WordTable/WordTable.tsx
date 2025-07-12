@@ -83,9 +83,11 @@ export default function WordTable() {
     ];
     return cols.filter(Boolean);
   }, [isMobile, openId]);
+
   const data: Word[] = useSelector(selectAllWords);
+
   const sortedData = useMemo(() => {
-    return [...data].sort((a, b) => a.en.localeCompare(b.en));
+    return [...data].sort((a, b) => a.en.localeCompare(b.en)).slice(0, 7);
   }, [data]);
   const table = useReactTable({
     data: sortedData,

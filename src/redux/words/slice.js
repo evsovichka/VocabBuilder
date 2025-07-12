@@ -75,11 +75,6 @@ const wordsSlice = createSlice({
       })
       .addCase(editWord.fulfilled, (state, action) => {
         state.isLoading = false;
-        // state.items = state.items.find((item) => {
-        //   if (item._id === action.payload.id) {
-        //     item = action.payload;
-        //   }
-        // });
         state.items = state.items.map((item) =>
           item._id === action.payload._id ? action.payload : item
         );
