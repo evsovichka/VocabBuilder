@@ -105,10 +105,10 @@
   line-height: 150%;
 }
 
-.addBtn {
+.saveBtn {
   background-color: var(--white);
   color: var(--black);
-  padding: 12px 63px;
+  padding: 12px 50px;
   width: 159px;
 }
 
@@ -119,7 +119,7 @@
   color: var(--white);
 }
 
-.addBtn:hover {
+.saveBtn:hover {
   color: var(--green);
 }
 
@@ -176,8 +176,8 @@
     font-size: 18px;
   }
 
-  .addBtn {
-    padding: 14px 105px;
+  .saveBtn {
+    padding: 14px 100px;
     width: 245px;
   }
 

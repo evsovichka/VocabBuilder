@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import addWordSchema from "./validation.js";
 import { useDispatch } from "react-redux";
-import { createWord } from "../../redux/words/operations.js";
+import { createWord, getStatistics } from "../../redux/words/operations.js";
 
 export default function AddWordForm({ closeModal }) {
   const [category, setCategory] = useState("");

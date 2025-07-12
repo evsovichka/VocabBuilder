@@ -62,7 +62,10 @@ export const editWord = createAsyncThunk(
   "words/edit",
   async (payload, thunkApi) => {
     try {
-      const { data } = axios.patch(`words/edit/${payload.id}`, payload);
+      const { id, ...updatedData } = payload;
+      const { data } = await axios.patch(`words/edit/${id}`, {
+        ...updatedData,
+      });
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

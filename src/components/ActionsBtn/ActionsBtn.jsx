@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteWord } from "../../redux/words/operations.js";
 import { useEffect, useRef } from "react";
 import { useModal } from "../../hooks/useModal.js";
+import { setSelectedWord } from "../../redux/SelectedWord/slice";
 
 export default function ActionsBtn({ data, setOpenId, isOpen }) {
   const { _id } = data;
@@ -17,6 +18,7 @@ export default function ActionsBtn({ data, setOpenId, isOpen }) {
 
   const handleOpenEditModal = () => {
     openModal("editWord");
+    dispatch(setSelectedWord(data));
     setOpenId(null);
   };
 

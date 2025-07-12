@@ -51,7 +51,7 @@ td:last-child {
   .tableWrap {
     border-radius: 15px;
     padding: 18px;
-    width: 100%;
+    width: 704px;
     background-color: #ffff;
   }
 
@@ -98,6 +98,9 @@ td:last-child {
 
 /* ------------Desktop----------- */
 @media screen and (min-width: 1440px) {
+  .tableWrap {
+    width: 1240px;
+  }
   .thead {
     height: 72px;
   }

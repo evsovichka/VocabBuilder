@@ -14,6 +14,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { filtersReducer } from "./filters/slice.js";
+import { selectedWordReducer } from "./SelectedWord/slice.js";
 
 const persistedAuthReducer = persistReducer(
   {
@@ -38,6 +39,7 @@ export const store = configureStore({
     categories: categoriesReducer,
     words: wordsReducer,
     filters: persistedFiltersReducer,
+    selectedWord: selectedWordReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
