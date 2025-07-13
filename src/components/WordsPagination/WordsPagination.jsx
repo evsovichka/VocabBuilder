@@ -22,6 +22,11 @@ export default function WordsPagination({ setPage, page }) {
       visiblePages.push(2);
       visiblePages.push(3);
       visiblePages.push("rightDots");
+    } else if (page === 3) {
+      visiblePages.push(2);
+      visiblePages.push(3);
+      visiblePages.push(4);
+      visiblePages.push("rightDots");
     } else if (page >= countPages - 1) {
       visiblePages.push("leftDots");
       visiblePages.push(countPages - 2);
