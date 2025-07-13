@@ -1,0 +1,61 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.item {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 8px;
+  padding: 7px;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.item:focus,
+.item:hover {
+  background: var(--green);
+  color: #ffff;
+}
+
+.itemWithIcon {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 8px;
+  padding: 7px;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.itemWithIcon:hover {
+  border: 1px solid var(--green);
+  color: var(--green);
+}
+
+.itemWithIcon:hover .icon {
+  color: var(--green);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: var(--black);
+}
+
+.iconReverse {
+  transform: rotate(180deg);
+}
+
+.iconThreedots {
+  width: 12px;
+  height: 12px;
+  color: var(--black);
+}
+.itemThreeDots {
+  padding-top: 12px;
+}

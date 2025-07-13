@@ -7,6 +7,7 @@ import { selectFilters } from "../../redux/filters/selectors.js";
 import WordTable from "../../components/WordTable/WordTable.tsx";
 import css from "./DictionaryPage.module.css";
 import clsx from "clsx";
+import WordsPagination from "../../components/WordsPagination/WordsPagination.jsx";
 export default function DictionaryPage() {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
@@ -22,6 +23,7 @@ export default function DictionaryPage() {
     <section className={clsx("container", css.wrap)}>
       <Dashboard />
       <WordTable />
+      <WordsPagination />
     </section>
   );
 }
