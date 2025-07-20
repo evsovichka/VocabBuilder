@@ -11,6 +11,7 @@ import { useMemo, useState } from "react";
 import css from "./WordTable.module.css";
 import { useResizeWindow } from "../../hooks/resizeWindow";
 import ActionsBtn from "../ActionsBtn/ActionsBtn";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 export default function WordTable() {
   type Word = {
@@ -71,7 +72,7 @@ export default function WordTable() {
         }),
       columnHelper.accessor("progress", {
         header: () => <span className={css.header}>Progress</span>,
-        cell: (props) => props.getValue(),
+        cell: (props) => <ProgressBar value={props.getValue()} />,
       }),
       columnHelper.display({
         id: "actions",

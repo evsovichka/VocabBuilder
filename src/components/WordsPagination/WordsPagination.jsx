@@ -5,40 +5,59 @@ import { IoIosArrowBack } from "react-icons/io";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 import clsx from "clsx";
+import { useResizeWindow } from "../../hooks/resizeWindow";
 
 export default function WordsPagination({ setPage, page }) {
   const totalCountWords = useSelector(selectStatistics);
   const countPages = Math.ceil(totalCountWords / 7);
   const visiblePages = [];
+  const sizeWindow = useResizeWindow();
+  const isMobile = sizeWindow < 768;
 
-  if (countPages <= 5) {
-    for (let i = 1; i <= countPages; i++) {
-      visiblePages.push(i);
+  if (isMobile) {
+    if (countPages <= 3) {
+      for (let i = 1; i <= countPages; i++) {
+        visiblePages.push(i);
+      }
+    } else {
+      if (page < countPages - 1) {
+        visiblePages.push(page, page + 1, "rightDots");
+      }
+      if (page === countPages - 1) {
+        visiblePages.push(1, "leftDots", page);
+      }
+
+      if (page === countPages) {
+        visiblePages.push(1, "leftDots", page - 1, page);
+      }
+
+      if (page !== countPages) {
+        visiblePages.push(countPages);
+      }
     }
   } else {
-    visiblePages.push(1);
-
-    if (page <= 2) {
-      visiblePages.push(2);
-      visiblePages.push(3);
-      visiblePages.push("rightDots");
-    } else if (page === 3) {
-      visiblePages.push(2);
-      visiblePages.push(3);
-      visiblePages.push(4);
-      visiblePages.push("rightDots");
-    } else if (page >= countPages - 1) {
-      visiblePages.push("leftDots");
-      visiblePages.push(countPages - 2);
-      visiblePages.push(countPages - 1);
+    if (countPages <= 5) {
+      for (let i = 1; i <= countPages; i++) {
+        visiblePages.push(i);
+      }
     } else {
-      visiblePages.push("leftDots");
-      visiblePages.push(page - 1);
-      visiblePages.push(page);
-      visiblePages.push(page + 1);
-      visiblePages.push("rightDots");
+      visiblePages.push(1);
+
+      if (page <= 2) {
+        visiblePages.push(2, 3, "rightDots");
+      } else if (page === 3) {
+        visiblePages.push(2, 3, 4, "rightDots");
+      } else if (page === countPages - 1) {
+        visiblePages.push("leftDots", countPages - 2, countPages - 1);
+      } else if (page === countPages - 2) {
+        visiblePages.push("leftDots", page - 1, page, page + 1);
+      } else if (page === countPages) {
+        visiblePages.push("leftDots", page - 2, page - 1);
+      } else {
+        visiblePages.push("leftDots", page - 1, page, page + 1, "rightDots");
+      }
+      visiblePages.push(countPages);
     }
-    visiblePages.push(countPages);
   }
 
   const handleOpenPage = (i) => {
