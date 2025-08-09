@@ -5,15 +5,15 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { capitalize } from "../../utils/capitalize";
-import { selectAllWords } from "../../redux/words/selectors";
-import { useSelector } from "react-redux";
+// import { selectAllWords } from "../../redux/words/selectors";
+// import { useSelector } from "react-redux";
 import { useMemo, useState } from "react";
 import css from "./WordTable.module.css";
 import { useResizeWindow } from "../../hooks/resizeWindow";
 import ActionsBtn from "../ActionsBtn/ActionsBtn";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
-export default function WordTable() {
+export default function WordTable({ wordsList }) {
   type Word = {
     _id: string;
     en: string;
@@ -85,7 +85,8 @@ export default function WordTable() {
     return cols.filter(Boolean);
   }, [isMobile, openId]);
 
-  const data: Word[] = useSelector(selectAllWords);
+  // const data: Word[] = useSelector(selectAllWords);
+  const data: Word[] = wordsList;
 
   const sortedData = useMemo(() => {
     return [...data].sort((a, b) => a.en.localeCompare(b.en)).slice(0, 7);

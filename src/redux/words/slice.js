@@ -5,11 +5,14 @@ import {
   editWord,
   fetchAllWords,
   getStatistics,
+  fetchWordsOtherUsers,
 } from "./operations.js";
 
 const initialState = {
   items: [],
   totalCount: null,
+  otherUsersWords: [],
+  totalCountOtherUsersWords: null,
   isLoading: false,
   isError: null,
 };
@@ -80,6 +83,19 @@ const wordsSlice = createSlice({
         );
       })
       .addCase(editWord.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      })
+      .addCase(fetchWordsOtherUsers.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+      })
+      .addCase(fetchWordsOtherUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.otherUsersWords = action.payload.results;
+        state.totalCountOtherUsersWords = action.payload.totalPages;
+      })
+      .addCase(fetchWordsOtherUsers.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });

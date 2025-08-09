@@ -14,7 +14,7 @@ import {
 } from "../../redux/filters/selectors.js";
 // import { fetchAllWords } from "../../redux/words/operations.js";
 
-export default function Dashboard() {
+export default function Dashboard({ variant }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { openModal } = useModal();
@@ -72,13 +72,15 @@ export default function Dashboard() {
           <p className={css.totalCount}>{totalCount}</p>
         </div>
         <div className={css.buttonBox}>
-          <ActionButton
-            svgName="icon-plus"
-            className="dashboardBtn"
-            onClick={() => openModal("addWord")}
-          >
-            Add word
-          </ActionButton>
+          {variant === "dictionary" && (
+            <ActionButton
+              svgName="icon-plus"
+              className="dashboardBtn"
+              onClick={() => openModal("addWord")}
+            >
+              Add word
+            </ActionButton>
+          )}
           <ActionButton
             svgName="icon-arrow-right"
             className="dashboardBtn"

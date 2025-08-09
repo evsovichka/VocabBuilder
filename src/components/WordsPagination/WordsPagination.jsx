@@ -1,5 +1,8 @@
 import { useSelector } from "react-redux";
-import { selectStatistics } from "../../redux/words/selectors";
+import {
+  selectStatistics,
+  selectTotalCountWordsOtherUsers,
+} from "../../redux/words/selectors";
 import css from "./WordsPagination.module.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
@@ -7,9 +10,18 @@ import { BsThreeDots } from "react-icons/bs";
 import clsx from "clsx";
 import { useResizeWindow } from "../../hooks/resizeWindow";
 
-export default function WordsPagination({ setPage, page }) {
+export default function WordsPagination({ setPage, page, variant }) {
   const totalCountWords = useSelector(selectStatistics);
-  const countPages = Math.ceil(totalCountWords / 7);
+  const totalCountWordsOtherUsers = useSelector(
+    selectTotalCountWordsOtherUsers
+  );
+  console.log(totalCountWordsOtherUsers);
+
+  const countPages =
+    variant === "dictionary"
+      ? Math.ceil(totalCountWords / 7)
+      : totalCountWordsOtherUsers;
+
   const visiblePages = [];
   const sizeWindow = useResizeWindow();
   const isMobile = sizeWindow < 768;
@@ -100,7 +112,7 @@ export default function WordsPagination({ setPage, page }) {
 
     return (
       <div
-        key={item}
+        key={`item-${index}`}
         className={clsx(css.item, page === item && css.activeItem)}
         onClick={() => handleOpenPage(item)}
       >

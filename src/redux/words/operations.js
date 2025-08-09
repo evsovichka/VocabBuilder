@@ -72,3 +72,24 @@ export const editWord = createAsyncThunk(
     }
   }
 );
+
+export const fetchWordsOtherUsers = createAsyncThunk(
+  "words/otherUsers",
+  async ({ page = 1, filters }, thunkApi) => {
+    const { category, keyword, isIrregular } = filters;
+
+    const params = {
+      limit: 7,
+      page,
+      ...(category && { category }),
+      ...(keyword && { keyword }),
+      ...(typeof isIrregular === "boolean" && { isIrregular }),
+    };
+    try {
+      const { data } = await axios.get("words/all", { params });
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

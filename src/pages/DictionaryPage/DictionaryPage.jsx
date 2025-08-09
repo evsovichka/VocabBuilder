@@ -8,11 +8,13 @@ import WordTable from "../../components/WordTable/WordTable.tsx";
 import css from "./DictionaryPage.module.css";
 import clsx from "clsx";
 import WordsPagination from "../../components/WordsPagination/WordsPagination.jsx";
+import { selectAllWords } from "../../redux/words/selectors.js";
 
 export default function DictionaryPage() {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
   const [page, setPage] = useState(1);
+  const wordsList = useSelector(selectAllWords);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -22,9 +24,9 @@ export default function DictionaryPage() {
 
   return (
     <section className={clsx("container", css.wrap)}>
-      <Dashboard />
-      <WordTable />
-      <WordsPagination setPage={setPage} page={page} />
+      <Dashboard variant="dictionary" />
+      <WordTable wordsList={wordsList} />
+      <WordsPagination setPage={setPage} page={page} variant="dictionary" />
     </section>
   );
 }
