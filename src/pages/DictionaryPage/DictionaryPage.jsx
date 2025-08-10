@@ -25,7 +25,7 @@ export default function DictionaryPage() {
   return (
     <section className={clsx("container", css.wrap)}>
       <Dashboard variant="dictionary" />
-      <WordTable wordsList={wordsList} />
+      <WordTable wordsList={wordsList} variant="dictionary" />
       <WordsPagination setPage={setPage} page={page} variant="dictionary" />
     </section>
   );

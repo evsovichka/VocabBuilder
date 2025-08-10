@@ -23,7 +23,7 @@ export default function RecommendPage() {
   return (
     <section className={clsx("container", css.wrap)}>
       <Dashboard />
-      <WordTable wordsList={words} />
+      <WordTable wordsList={words} variant="recommend" />
       <WordsPagination setPage={setPage} page={page} />
     </section>
   );

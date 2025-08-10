@@ -18,7 +18,8 @@
 .dashboardBtn {
   gap: 8px;
 }
-.button.dashboardBtn svg {
+.button.dashboardBtn svg,
+.button.recommendBtn svg {
   width: 20px;
   height: 20px;
   stroke: var(--green);
@@ -28,6 +29,13 @@
 @media screen and (min-width: 768px) {
   .button {
     font-size: 16px;
+  }
+  .recommendBtn {
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 }
 

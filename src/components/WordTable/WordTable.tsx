@@ -12,8 +12,11 @@ import css from "./WordTable.module.css";
 import { useResizeWindow } from "../../hooks/resizeWindow";
 import ActionsBtn from "../ActionsBtn/ActionsBtn";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import ActionButton from "../ui/ActionButton/ActionButton";
+import { createWord } from "../../redux/words/operations";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
-export default function WordTable({ wordsList }) {
+export default function WordTable({ wordsList, variant }) {
   type Word = {
     _id: string;
     en: string;
@@ -27,6 +30,8 @@ export default function WordTable({ wordsList }) {
   const sizeWindow = useResizeWindow();
   const isMobile = sizeWindow < 768;
 
+  const dispatch = useAppDispatch();
+
   const [openId, setOpenId] = useState(null);
 
   const actionCell = (row) => (
@@ -37,6 +42,23 @@ export default function WordTable({ wordsList }) {
     />
   );
 
+  const addActionCell = (row) => (
+    <ActionButton
+      svgName="icon-arrow-right"
+      className="recommendBtn"
+      onClick={() => {
+        const formattedData = {
+          en: row.original.en,
+          ua: row.original.ua,
+          category: row.original.category,
+          isIrregular: row.original.isIrregular,
+        };
+        dispatch(createWord(formattedData as any));
+      }}
+    >
+      {!isMobile && "Add to dictionary"}
+    </ActionButton>
+  );
   const columns = useMemo(() => {
     const cols = [
       columnHelper.accessor("en", {
@@ -65,22 +87,32 @@ export default function WordTable({ wordsList }) {
         ),
         cell: (props) => capitalize(props.getValue()),
       }),
-      !isMobile &&
+      (variant === "recommend" || !isMobile) &&
         columnHelper.accessor("category", {
           header: () => <span className={css.header}>Category</span>,
           cell: (props) => capitalize(props.getValue()),
         }),
-      columnHelper.accessor("progress", {
-        header: () => <span className={css.header}>Progress</span>,
-        cell: (props) => <ProgressBar value={props.getValue()} />,
-      }),
-      columnHelper.display({
-        id: "actions",
-        header: () => (
-          <span className={`${css.header} ${css.lastheader}`}></span>
-        ),
-        cell: (props) => actionCell(props.row),
-      }),
+      variant === "dictionary" &&
+        columnHelper.accessor("progress", {
+          header: () => <span className={css.header}>Progress</span>,
+          cell: (props) => <ProgressBar value={props.getValue()} />,
+        }),
+      variant === "dictionary" &&
+        columnHelper.display({
+          id: "actions",
+          header: () => (
+            <span className={`${css.header} ${css.lastheader}`}></span>
+          ),
+          cell: (props) => actionCell(props.row),
+        }),
+      variant === "recommend" &&
+        columnHelper.display({
+          id: "add-btn",
+          header: () => (
+            <span className={`${css.header} ${css.lastheader}`}></span>
+          ),
+          cell: (props) => addActionCell(props.row),
+        }),
     ];
     return cols.filter(Boolean);
   }, [isMobile, openId]);
